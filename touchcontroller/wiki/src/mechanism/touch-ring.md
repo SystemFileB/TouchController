@@ -1,7 +1,10 @@
 # TouchController 中的触控圈
 
 <!-- ANCHOR: p1 -->
-曾用名：触摸准星（TouchController v0.1.x 及以前）
+> 曾用名：触摸准星（TouchController v0.1.x 及以前）
+
+- 触控圈可以用于在屏幕上任意位置所对应的方向进行交互，而不仅仅是屏幕中心的准星所指方向。
+- 触控圈在激活时将充当准星，可进行放置、破坏、攻击等等交互。
 <!-- ANCHOR_END: p1 -->
 
 ## 外观
@@ -14,9 +17,9 @@
 ## 特性
 
 <!-- ANCHOR: p3 -->
-- 触控圈现版本只能同时存在一个（除非实现 [#77](https://github.com/TouchController/TouchController/issues/77)），这代表了 TouchController 当前所识别的手指。
-- 打开分离控制后将不会再显示触控圈。
-- 触控圈激活后能代替原有的十字准心瞄准方块或实体。
+- 触控圈只能同时存在一个（除非实现 [#77](https://github.com/TouchController/TouchController/issues/77)）。
+- 打开分离控制后将禁用触控圈。
+- 触控圈激活后将代替原有的十字准心瞄准方块或实体。
 <!-- ANCHOR_END: p3 -->
 
 ![](assets/touch-ring/file-20251116210314479.png)
