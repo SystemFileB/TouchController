@@ -15,6 +15,7 @@ import top.fifthlight.touchcontroller.common.config.data.StatusConfig
 import top.fifthlight.touchcontroller.common.config.platform.BlazeSDLPlatformConfig
 import top.fifthlight.touchcontroller.common.ui.config.model.LocalConfigScreenModel
 import top.fifthlight.touchcontroller.common.ui.config.tab.Tab
+import top.fifthlight.touchcontroller.common.ui.config.tab.TabGroup
 import top.fifthlight.touchcontroller.common.ui.config.tab.TabOptions
 import top.fifthlight.touchcontroller.common.ui.theme.LocalTouchControllerTheme
 import top.fifthlight.touchcontroller.common.ui.widget.IntSliderPreferenceItem
@@ -23,7 +24,7 @@ import top.fifthlight.touchcontroller.common.ui.widget.SliderPreferenceItem
 object BlazeSDLConfigTab : Tab() {
     override val options = TabOptions(
         titleId = Texts.SCREEN_CONFIG_PLATFORM_TITLE,
-        group = null,
+        group = TabGroup.SystemGroup,
         index = 2,
         onReset = { copy(platform = platform.copy(blazesdl = BlazeSDLPlatformConfig())) },
     )

@@ -13,6 +13,7 @@ sealed class TabGroup(
         @Composable
         get() = Text.translatable(titleId)
 
+    data object SystemGroup : TabGroup(Texts.SCREEN_CONFIG_SYSTEM_TITLE)
     data object LayoutGroup : TabGroup(Texts.SCREEN_CONFIG_LAYOUT_TITLE)
     data object GeneralGroup : TabGroup(Texts.SCREEN_CONFIG_GENERAL_TITLE)
     data object ItemGroup : TabGroup(Texts.SCREEN_CONFIG_ITEM_TITLE)

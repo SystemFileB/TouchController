@@ -65,6 +65,8 @@
   "touchcontroller.screen.config.status.status.disable.title": "Disable",
   "touchcontroller.screen.config.status.status.disable.description": "Disable all of TouchController's functionalities.",
 
+  "touchcontroller.screen.config.system.title": "System",
+
   "touchcontroller.screen.config.platform.title": "Platform",
   "touchcontroller.screen.config.platform.blazesdl.vibration_strength.title": "Vibration strength",
   "touchcontroller.screen.config.platform.blazesdl.vibration_strength.description": "Set vibration strength when breaking blocks ",

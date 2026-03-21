@@ -65,6 +65,8 @@
   "touchcontroller.screen.config.status.status.disable.title": "禁用",
   "touchcontroller.screen.config.status.status.disable.description": "TouchController 将被完全禁用。",
 
+  "touchcontroller.screen.config.system.title": "系统",
+
   "touchcontroller.screen.config.platform.title": "平台",
   "touchcontroller.screen.config.platform.blazesdl.vibration_strength.title": "振动强度",
   "touchcontroller.screen.config.platform.blazesdl.vibration_strength.description": "设置破坏方块时的振动强度",

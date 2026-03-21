@@ -27,6 +27,7 @@ import top.fifthlight.touchcontroller.assets.Texts
 import top.fifthlight.touchcontroller.buildinfo.BuildInfo
 import top.fifthlight.touchcontroller.common.about.License
 import top.fifthlight.touchcontroller.common.ui.config.tab.Tab
+import top.fifthlight.touchcontroller.common.ui.config.tab.TabGroup
 import top.fifthlight.touchcontroller.common.ui.config.tab.TabOptions
 import top.fifthlight.touchcontroller.common.ui.config.tab.about.model.AboutScreenModel
 import top.fifthlight.touchcontroller.common.ui.widget.raw.RawTextureIcon
@@ -36,7 +37,7 @@ import top.fifthlight.touchcontroller.common.ui.theme.LocalTouchControllerTheme
 object AboutTab : Tab() {
     override val options = TabOptions(
         titleId = Texts.SCREEN_CONFIG_ABOUT_TITLE,
-        group = null,
+        group = TabGroup.SystemGroup,
         index = 0,
     )
 

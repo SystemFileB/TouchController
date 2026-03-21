@@ -36,6 +36,7 @@ fun getAllTabs(configScreenModel: ConfigScreenModel): PersistentList<Tab> {
 }
 
 val allTabGroups = persistentListOf(
+    TabGroup.SystemGroup,
     TabGroup.LayoutGroup,
     TabGroup.GeneralGroup,
     TabGroup.ItemGroup,

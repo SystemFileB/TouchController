@@ -21,6 +21,7 @@ import top.fifthlight.touchcontroller.common.config.data.ControlConfig
 import top.fifthlight.touchcontroller.common.config.data.StatusConfig
 import top.fifthlight.touchcontroller.common.ui.config.model.LocalConfigScreenModel
 import top.fifthlight.touchcontroller.common.ui.config.tab.Tab
+import top.fifthlight.touchcontroller.common.ui.config.tab.TabGroup
 import top.fifthlight.touchcontroller.common.ui.config.tab.TabOptions
 import top.fifthlight.touchcontroller.common.ui.config.tab.status.model.StatusTabModel
 import top.fifthlight.touchcontroller.common.ui.theme.LocalTouchControllerTheme
@@ -29,7 +30,7 @@ import top.fifthlight.touchcontroller.common.ui.widget.ListButton
 object StatusTab : Tab() {
     override val options = TabOptions(
         titleId = Texts.SCREEN_CONFIG_STATUS_TITLE,
-        group = null,
+        group = TabGroup.SystemGroup,
         index = 1,
         onReset = { copy(status = StatusConfig()) },
     )
