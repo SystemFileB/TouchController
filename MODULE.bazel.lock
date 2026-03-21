@@ -3806,7 +3806,7 @@
     "//repo:neoform.bzl%neoform": {
       "general": {
         "bzlTransitiveDigest": "1Ztoz+yk0PGGmpRVqkfoo4Ya/fYWH+y2ryure1cAwas=",
-        "usagesDigest": "4Ftvu00CmXTqOdCbPRckYl/8e1v77fxMgWORSrRAyJY=",
+        "usagesDigest": "/G5nNTRzO3g8ej595WDyeao91ewE/vncnmWLYAN1XqQ=",
         "recordedInputs": [
           "REPO_MAPPING:, ",
           "REPO_MAPPING:,bazel_tools bazel_tools",
@@ -4119,11 +4119,11 @@
               "version": "26.1-pre-3-1",
               "legacy": false,
               "sha256": "a932a547db9bfbc0358ff79f1addd71d266858cea4771b5cd4abbbd1c9b7aae1",
-              "client_jar": "@@rules_mc++minecraft+minecraft//26.1-pre-3:client",
-              "server_jar": "@@rules_mc++minecraft+minecraft//26.1-pre-3:server",
-              "client_mapping": "@@rules_mc++minecraft+minecraft//26.1-pre-3:client_mappings",
-              "server_mapping": "@@rules_mc++minecraft+minecraft//26.1-pre-3:server_mappings",
-              "client_libraries": "@@rules_mc++minecraft+minecraft//26.1-pre-3:client_libraries",
+              "client_jar": "@@rules_mc++minecraft+minecraft//26.1-rc-2:client",
+              "server_jar": "@@rules_mc++minecraft+minecraft//26.1-rc-2:server",
+              "client_mapping": "@@rules_mc++minecraft+minecraft//26.1-rc-2:client_mappings",
+              "server_mapping": "@@rules_mc++minecraft+minecraft//26.1-rc-2:server_mappings",
+              "client_libraries": "@@rules_mc++minecraft+minecraft//26.1-rc-2:client_libraries",
               "pin_file": "@@//:neoform_pin.txt"
             }
           },

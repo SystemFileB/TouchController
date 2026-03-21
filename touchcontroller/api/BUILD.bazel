@@ -1,0 +1,44 @@
+load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
+load("//rule:maven_publish.bzl", "java_export")
+load("//rule:mod_info_jar.bzl", "mod_info_jar")
+load("//touchcontroller:properties.bzl", "touchcontroller_api_description", "touchcontroller_api_license", "touchcontroller_api_version", "touchcontroller_homepage", "touchcontroller_issue_tracker", "touchcontroller_source")
+
+substitutions = {
+    "${version}": touchcontroller_api_version,
+    "${license}": touchcontroller_api_license,
+    "${home_page}": touchcontroller_homepage,
+    "${sources_page}": touchcontroller_source,
+    "${issue_tracker}": touchcontroller_issue_tracker,
+    "${description}": touchcontroller_api_description,
+}
+
+expand_template(
+    name = "fabric_mod_json",
+    out = "fabric.mod.json",
+    substitutions = substitutions,
+    template = "resources/fabric.mod.json",
+)
+
+expand_template(
+    name = "neoforge_mods_toml",
+    out = "META-INF/neoforge.mods.toml",
+    substitutions = substitutions,
+    template = "resources/META-INF/neoforge.mods.toml",
+)
+
+java_export(
+    name = "api",
+    srcs = glob(["**/*.java"]),
+    coordinates = "top.fifthlight.touchcontroller:api:%s" % touchcontroller_api_version,
+    javacopts = ["--release=8"],
+    resource_strip_prefix = "touchcontroller/api",
+    resources = [
+        ":fabric_mod_json",
+        ":neoforge_mods_toml",
+    ],
+    visibility = ["//touchcontroller:__subpackages__"],
+    deps = [
+        "@maven//:org_jetbrains_annotations",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)

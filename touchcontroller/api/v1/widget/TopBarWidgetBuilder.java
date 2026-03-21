@@ -1,0 +1,21 @@
+package top.fifthlight.touchcontroller.api.v1.widget;
+
+import org.jetbrains.annotations.ApiStatus;
+import top.fifthlight.touchcontroller.api.v1.text.Text;
+
+@ApiStatus.NonExtendable
+public interface TopBarWidgetBuilder {
+    TopBarWidgetBuilder id(String id);
+
+    TopBarWidgetBuilder name(Text name);
+
+    TopBarWidgetBuilder normalTexture(WidgetTexture texture, boolean gray);
+
+    TopBarWidgetBuilder activeTexture(WidgetTexture texture, boolean gray);
+
+    TopBarWidgetBuilder down(WidgetTriggerAction action);
+
+    TopBarWidgetBuilder release(WidgetTriggerAction action);
+
+    TopBarWidgetBuilder doubleClick(WidgetTriggerAction action);
+}

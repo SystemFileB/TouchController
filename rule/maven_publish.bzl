@@ -1,6 +1,7 @@
 """Rules for publishing artifacts to Maven repositories."""
 
 load("@bazel_lib//lib:windows_utils.bzl", "create_windows_native_launcher_script")
+load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_java//java/common:java_info.bzl", "JavaInfo")
 load("@rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
 load("//rule:merge_jar.bzl", "merge_jar_action")
@@ -288,6 +289,24 @@ def kt_jvm_export(**kwargs):
     tags = kwargs["tags"] if "tags" in kwargs else []
     tags += ["maven_coordinates=%s" % kwargs["coordinates"]]
     kt_jvm_library(
+        tags = tags,
+        **args
+    )
+
+def java_export(**kwargs):
+    name = kwargs["name"]
+    maven_publish(
+        name = name + ".publish",
+        src = ":" + name,
+        deps = kwargs["deps"] if "deps" in kwargs else [],
+        runtime_deps = kwargs["runtime_deps"] if "runtime_deps" in kwargs else [],
+        coordinates = kwargs["coordinates"],
+    )
+
+    args = {key: value for key, value in kwargs.items() if key != "coordinates" and key != "tags"}
+    tags = kwargs["tags"] if "tags" in kwargs else []
+    tags += ["maven_coordinates=%s" % kwargs["coordinates"]]
+    java_library(
         tags = tags,
         **args
     )

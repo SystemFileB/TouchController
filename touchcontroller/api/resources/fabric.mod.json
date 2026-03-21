@@ -1,0 +1,22 @@
+{
+    "schemaVersion": 1,
+    "id": "touchcontroller-api",
+    "version": "${version}",
+    "name": "${name}",
+    "description": "${description}",
+    "authors": ["fifth_light"],
+    "license": "${license}",
+    "icon": "icon.png",
+    "contact": {
+        "homepage": "${home_page}",
+        "sources": "${sources_page}",
+        "issues": "${issue_tracker}"
+    },
+    "environment": "client",
+    "custom": {
+        "modmenu": {
+            "parent": "touchcontroller",
+            "badges": ["library"]
+        }
+    }
+}
