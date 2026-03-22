@@ -1,3 +1,8 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ * Copyright (C) 2026 fifth_light
+ */
+
 package top.fifthlight.touchcontroller.mixin.v1_21_11;
 
 import com.mojang.blaze3d.platform.InputConstants;

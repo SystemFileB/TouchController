@@ -1,3 +1,8 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ * Copyright (C) 2026 fifth_light
+ */
+
 package top.fifthlight.touchcontroller.gal.feature.v26_1
 
 import top.fifthlight.mergetools.api.ActualConstructor

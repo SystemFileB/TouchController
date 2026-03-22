@@ -1,3 +1,8 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ * Copyright (C) 2026 fifth_light
+ */
+
 package top.fifthlight.touchcontroller.common.ui.config.tab.layout.preset.model
 
 import top.fifthlight.touchcontroller.common.config.PresetConfig

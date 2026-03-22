@@ -1,3 +1,8 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ * Copyright (C) 2026 fifth_light
+ */
+
 package top.fifthlight.touchcontroller.common.platform
 
 import org.slf4j.LoggerFactory
@@ -10,7 +15,7 @@ abstract class LargeMessageWrappedPlatform: Platform {
     private val logger = LoggerFactory.getLogger(LargeMessageWrappedPlatform::class.java)
     private var largeMessageBuffer = ByteBuffer.allocate(65536)
     private val encodeBuffer = ByteBuffer.allocate(65536)
-    
+
     protected abstract fun pollSmallEvent(): ProxyMessage?
     final override fun pollEvent(): ProxyMessage? {
         while (true) {
@@ -55,7 +60,7 @@ abstract class LargeMessageWrappedPlatform: Platform {
             val length = encodeBuffer.remaining().coerceAtMost(LargeMessage.MAX_PAYLOAD_LENGTH)
             val payload = ByteArray(length)
             encodeBuffer.get(payload)
-            
+
             sendSmallEvent(
                 LargeMessage(
                     payload = payload,
