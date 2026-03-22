@@ -33,3 +33,15 @@ This is the central repository of TouchController organization. Now there are:
 Also, following Bazel rules are in this repo:
 
 - [rules_mc](https://github.com/TouchController/rules_mc): A Bazel rule to download Minecraft official client + server, and their library dependencies. [README](rules_mc/README.md)
+
+---
+
+## Star History
+
+<a href="https://star-history.com/#TouchController/TouchController&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=TouchController/TouchController&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=TouchController/TouchController&type=Date" />
+   <img alt="Star history" src="https://api.star-history.com/svg?repos=TouchController/TouchController&type=Date" />
+ </picture>
+</a>
