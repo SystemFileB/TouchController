@@ -17,7 +17,7 @@
 
 ---
 
-# TouchController Monorepo
+# TouchController
 
 This is the central repository of TouchController organization. Now there are:
 
