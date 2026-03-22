@@ -138,7 +138,9 @@ include("//module:touchcontroller.MODULE.bazel")
 include("//module:blazesdl.MODULE.bazel")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+
 maven.install(
+    known_contributing_modules = ["protobuf"],
     artifacts = [
         # Kotlin
         "org.jetbrains.kotlin:kotlin-stdlib:2.2.21",
