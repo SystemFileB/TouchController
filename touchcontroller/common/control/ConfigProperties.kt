@@ -1071,7 +1071,7 @@ class TriggerActionProperty<Config : ControllerWidget>(
                                     modifier = Modifier.verticalScroll(),
                                     onItemSelected = { expanded = false },
                                     items = GameActions.registry.mapNotNull { action ->
-                                        if (action.hidden) return null
+                                        if (action.hidden) return@mapNotNull null
                                         Pair(action.name) {
                                             onConfigChanged(setValue(config, WidgetTriggerAction.Game(action)))
                                         }
