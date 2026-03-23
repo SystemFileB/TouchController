@@ -39,8 +39,8 @@
 ### 使用启动器下载
 
  1. 在模组安装页面中搜索 TouchController。
- 2. 根据启动器的提示，根据安装到的 Minecraft 版本和 mod 加载器，寻找对应的最新版 TouchController。如果使用了 Fabric 版本，还需要安装 Fabric API，不过大部分启动器可以选择在安装游戏版本时一并安装 Fabric API，此时无需重复安装。
- 3. Fabric 版本还可以选择安装 [模组菜单（Mod Menu）](https://modrinth.com/mod/modmenu) 这样可以更方便地进入设置页面。
+ 2. 根据启动器的提示，根据安装到的 Minecraft 版本和 mod 加载器，寻找对应的最新版 TouchController。如果使用了 Fabric 版本，还需要安装 [Fabric API](https://modrinth.com/project/P7dR8mSH) 和 [Fabric Language Kotlin](https://modrinth.com/project/Ha28R6CL)，大部分启动器可以选择在安装游戏版本时一并安装 Fabric API，此时无需重复安装 Fabric API。
+ 3. Fabric 版本还可以选择安装 [Mod Menu](https://modrinth.com/project/mOgUt4GM)，这样可以更方便地进入设置页面。
 
 ### 从网站下载
 
@@ -55,7 +55,7 @@
 #### 安装
 
 1. 找到 mod 文件夹，一般在 `.minecraft/mods`，如果开启了版本隔离，mod 文件夹就在 `.minecraft/versions/<游戏版本名称>/mods`。
-2. 将下载的 TouchController 模组文件放进去，如果使用了 Fabric 版本，还需要安装 Fabric API。
+2. 将下载的 TouchController 模组文件放进去，如果使用了 Fabric 版本，还需要安装 [Fabric API](https://modrinth.com/project/P7dR8mSH) 和 [Fabric Language Kotlin](https://modrinth.com/project/Ha28R6CL)。
 
 ## 游玩
 
