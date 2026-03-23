@@ -17,11 +17,7 @@ TouchController 是一个 Minecraft 模组，能够为 Java 版（Minecraft: Jav
 
 ## 官方地址
 
-- <https://github.com/TouchController>
-- <https://www.mcmod.cn/class/17432.html>
-- <https://modrinth.com/mod/touchcontroller>
-- <https://gitee.com/fifth_light/TouchController>
-- <https://www.curseforge.com/minecraft/mc-mods/touchcontroller>
+[GitHub](https://github.com/TouchController) | [MCMOD](https://www.mcmod.cn/class/17432.html) | [Modrinth](https://modrinth.com/mod/touchcontroller) | [Gitee](https://gitee.com/fifth_light/TouchController) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/touchcontroller)
 
 ## 关于我们
 
