@@ -9,7 +9,7 @@
 - AuthProxy: 一款 Minecraft：Java 版的模组，允许为服务器验证使用代理。
 - BlazeSDL: 一款 Minecraft：Java 版的模组，将窗口管理库替换为 SDL3。
 - PathFlow: 一个 Kotlin 库，用于定义数据的特征和转换规则，从而自动求解转换路径，完成数据转换。计划用于 BlazeRod 库，以自动完成不同格式的动画转换。
-- FastMerger：一款为处理速度设计的 JAR shadowing + relocating 软件，为打包 Minecraft Mod 依赖而生。 
+- FastMerger：一款为处理速度设计的 JAR shadowing + relocating 软件，为打包 Minecraft Mod 依赖而生。
 
 另外的，还有以下的 Bazel 规则：
 
@@ -33,6 +33,15 @@ This is the central repository of TouchController organization. Now there are:
 Also, following Bazel rules are in this repo:
 
 - [rules_mc](https://github.com/TouchController/rules_mc): A Bazel rule to download Minecraft official client + server, and their library dependencies. [README](rules_mc/README.md)
+
+---
+
+## Translating
+
+We are using Weblate Platform to translate our projects. You can help us by joining
+[our project](https://hosted.weblate.org/projects/touchcontroller/) to contribute translations!
+
+Thanks to every translate contributor for making our projects multilingual!
 
 ---
 
