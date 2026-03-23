@@ -1,0 +1,14 @@
+load("@rules_java//java:defs.bzl", "java_library")
+
+java_library(
+    name = "wincred",
+    srcs = [
+        "CredAdvapi32.java",
+        "WinCred.java",
+    ],
+    visibility = ["//rule/token_helper:__pkg__"],
+    deps = [
+        "@maven//:net_java_dev_jna_jna",
+        "@maven//:net_java_dev_jna_jna_platform",
+    ],
+)
