@@ -46,6 +46,7 @@ body:
           description: "请简要叙述您所希望添加的新功能 / Please briefly describe the new feature you want to add"
           placeholder: |
               <对此功能的简要描述 / Brief description of this feature>
+          required: true
     - type: textarea
       id: feature_details
       attributes:
@@ -53,6 +54,7 @@ body:
           description: "请详细描述需要此功能的原因，以及此功能的内容 / Please describe in detail why this feature is needed and what it should do"
           placeholder: |
               <需要此功能的原因，以及此功能的详细内容 / Reasons why this feature is needed, and detailed content of this feature>
+          required: true
     - type: markdown
       attributes:
           value: "### 感谢您对 TouchController 的支持！ / Thank you for your support of TouchController!"
