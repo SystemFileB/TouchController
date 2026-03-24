@@ -1,28 +1,28 @@
-name: Bug 报告
-description: 报告您发现的 BUG
+name: Bug 报告 / Bug Report
+description: 报告您发现的 BUG / Report the BUG you found
 title: "[Bug]: "
 type: bug
 body:
     - type: markdown
       attributes:
-          value: "# Bug 报告"
+          value: "# Bug 报告 / Bug Report"
     - type: checkboxes
       id: bug_check
       attributes:
-          label: 检查项
-          description: 在报告前，请确认以下内容：
+          label: "检查项 / Checklist"
+          description: "在报告前，请确认以下内容 / Before reporting, please confirm the following"
           options:
-              - label: 此 bug 未被报告过（可以在[这里](https://github.com/TouchController/TouchController/issues?q=is%3Aissue%20type%3ABug)进行搜索）
+              - label: "此 bug 未被报告过（可以在[这里](https://github.com/TouchController/TouchController/issues?q=is%3Aissue%20type%3ABug)进行搜索） / This bug has not been reported before (you can search [here](https://github.com/TouchController/TouchController/issues?q=is%3Aissue%20type%3ABug))"
                 required: true
-              - label: 此 bug 的修复不在 [Pull Requests](https://github.com/TouchController/TouchController/pulls) 中
+              - label: "此 bug 的修复不在 [Pull Requests](https://github.com/TouchController/TouchController/pulls) 中 / This bug fix is not in [Pull Requests](https://github.com/TouchController/TouchController/pulls)"
                 required: true
-              - label: 我已将对应项目更新到最新版本
+              - label: "我已将对应项目更新到最新版本 / I have updated the corresponding project to the latest version"
                 required: true
     - type: dropdown
       id: bug_project
       attributes:
-          label: 项目
-          description: 出现问题的对应项目
+          label: "项目 / Project"
+          description: "出现问题的对应项目 / Corresponding project where the issue occurs"
           options:
               - TouchController
               - Combine
@@ -39,31 +39,31 @@ body:
     - type: dropdown
       id: bug_os
       attributes:
-          label: 操作系统
-          description: 您使用的操作系统，如果选择其它，请在下文中说明
+          label: "操作系统 / Operating System"
+          description: "您使用的操作系统，如果选择其它，请在下文中说明 / Your operating system, if you select Other, please explain below"
           options:
               - Windows
               - Linux
               - macOS
               - Android
               - iOS
-              - 其它
+              - "其它 / Other"
           default: 0
       validations:
           required: true
     - type: input
       id: bug_version
       attributes:
-          label: 版本
-          description: 发现此 bug 时使用的项目版本，若涉及，还需提供Minecraft 版本、模组加载器名称及其版本
-          placeholder: 版本：vx.x.x；Minecraft版本：x.x.x；模组加载器：***，版本：***
+          label: "版本 / Version"
+          description: "发现此 bug 时使用的项目版本，若涉及，还需提供Minecraft 版本、模组加载器名称及其版本 / Project version used when discovering this bug, if applicable, also provide Minecraft version, mod loader name and version"
+          placeholder: "版本：vx.x.x；Minecraft版本：x.x.x；模组加载器：***，版本：*** / Version: vx.x.x; Minecraft version: x.x.x; mod loader: ***, version: ***"
       validations:
           required: true
     - type: textarea
       id: bug_reproducer
       attributes:
-          label: 复现流程
-          description: 请简要陈述如何触发这一个 bug
+          label: "复现流程 / Reproduction Steps"
+          description: "请简要陈述如何触发这一个 bug / Please briefly describe how to trigger this bug"
           placeholder: |
               1. xxx
               2. xxx
@@ -73,11 +73,11 @@ body:
     - type: upload
       id: bug_log
       attributes:
-          label: 日志
-          description: 上传日志（Minecraft 日志一般存在于游戏目录中的 `logs` 目录）。
+          label: "日志 / Logs"
+          description: "上传日志（Minecraft 日志一般存在于游戏目录中的 `logs` 目录）。 / Upload logs (Minecraft logs are usually in the `logs` directory in the game directory)."
           accept: .log,.txt,.gz
       validations:
           required: true
     - type: markdown
       attributes:
-          value: "### 感谢您对 TouchController 的支持！"
+          value: "### 感谢您对 TouchController 的支持！ / Thank you for your support of TouchController!"
