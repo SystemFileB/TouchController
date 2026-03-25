@@ -104,7 +104,6 @@ fabric_merge_jij(
     visibility = ["//visibility:public"],
     deps = {
         "//combine/backend/minecraft/fabric/26.1:fabric_merged": "combine:=",
-        "//blazesdl/api": "blazesdl-api:=",
     } | touchcontroller_fabric_libraries | combine_fabric_libraries,
 )
 
