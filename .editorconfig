@@ -4,3 +4,6 @@ trim_trailing_whitespace = true
 
 [fabric.mod.json]
 indent_size = 4
+
+[en_us.json]
+indent_size = 4
