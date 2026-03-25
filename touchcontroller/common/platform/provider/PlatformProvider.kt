@@ -71,9 +71,18 @@ object PlatformProvider {
 
     val displayName by lazy {
         when {
-            PlatformProvider.isAndroid -> "Android"
-            PlatformProvider.isIos -> "iOS"
-            else -> PlatformProvider.systemName
+            isAndroid -> "Android"
+            isIos -> "iOS"
+            else -> systemName
+        }
+    }
+
+    val hasBlazeSDL: Boolean by lazy {
+        try {
+            Class.forName("top.fifthlight.blazesdl.api.BlazeSDLAPI")
+            BlazeSDLAPI.getInstance() != null
+        } catch (ex: ClassNotFoundException) {
+            false
         }
     }
 
@@ -228,7 +237,9 @@ object PlatformProvider {
     }
 
     private fun loadPlatform(): Platform? {
-        BlazeSDLAPI.getInstance()?.let { api -> return BlazeSDLPlatform(api) }
+        if (hasBlazeSDL) {
+            BlazeSDLAPI.getInstance()?.let { api -> return BlazeSDLPlatform(api) }
+        }
 
         val socketPort = System.getenv("TOUCH_CONTROLLER_PROXY")?.toIntOrNull()
         if (socketPort != null) {

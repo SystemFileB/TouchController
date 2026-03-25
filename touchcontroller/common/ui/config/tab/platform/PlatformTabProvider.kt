@@ -10,7 +10,7 @@ import top.fifthlight.touchcontroller.common.platform.sdl.BlazeSDLPlatform
 import top.fifthlight.touchcontroller.common.ui.config.tab.Tab
 
 val platformTab: Tab?
-    get() = when (PlatformProvider.platform) {
-        is BlazeSDLPlatform -> BlazeSDLConfigTab
+    get() = when {
+        PlatformProvider.hasBlazeSDL && PlatformProvider.platform is BlazeSDLPlatform -> BlazeSDLConfigTab
         else -> null
     }
