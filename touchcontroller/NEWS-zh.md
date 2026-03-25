@@ -1,5 +1,9 @@
 # TouchController NEWS - 用户可见的更改。
 
+## 0.3.1-alpha05
+
+- 补全了缺失的原生库
+
 ## 0.3.1-alpha04
 
 - 添加了 BlazeSDL 平台支持

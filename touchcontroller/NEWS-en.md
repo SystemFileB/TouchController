@@ -1,5 +1,9 @@
 # TouchController NEWS - User visible changes.
 
+## 0.3.1-alpha05
+
+- Added missing native libraries
+
 ## 0.3.1-alpha04
 
 - Added BlazeSDL platform support
