@@ -195,14 +195,14 @@ neoforge_versions = {
     },
     "26.1": {
         "java_target": 25,
-        "version": "26.1-rc-2",
+        "version": "26.1",
         "mapping": False,
-        "neoform_version": "26.1-pre-3-1",
-        "neoform_sha256": "a932a547db9bfbc0358ff79f1addd71d266858cea4771b5cd4abbbd1c9b7aae1",
-        "neoforge_version": "26.1.0.0-alpha.15+pre-3",
-        "neoforge_userdev_sha256": "fd6607195f6bfaefbf44779ee57a2d6cd783b1cf4b912e4b1a213d99f89724c3",
-        "neoforge_sources_sha256": "54cbdf409d4952da94479ea8997aa471cfef338a90d2b2354b9f9deb4319aebb",
-        "neoforge_universal_sha256": "33a5da6f254d1e81b323903339773cea0fbc4a9ee1c91f9634f7c0e20f836ca7",
+        "neoform_version": "26.1-1",
+        "neoform_sha256": "66dfce58e1d06d221317b33586a45e9394a40615af677d498244434597f7e80f",
+        "neoforge_version": "26.1.0.1-beta",
+        "neoforge_userdev_sha256": "33642495ea49dbfb2be303b8c5519c4adba1020896e42d7b4469c96df27c8c5c",
+        "neoforge_sources_sha256": "d0201737c3ed5af2b26a542ba30e150b544d0d10366814dbf7633539a9e3b0f3",
+        "neoforge_universal_sha256": "5702b53423c06d56fabfc3bf2e4fb6dae047d5da31f6167206e59ac018239a09",
     },
 }
 
