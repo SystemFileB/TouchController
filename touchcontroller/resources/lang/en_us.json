@@ -337,7 +337,7 @@
     "touchcontroller.texture_set.new.name": "New",
     "touchcontroller.texture_set.classic.name": "Classic",
     "touchcontroller.texture_set.new_regression.name": "New regression",
-    "touchcontroller.texture_set.classic_extension.name": "Classic extension",
+    "touchcontroller.texture_set.classic_extension.name": "Classic extended",
 
     "touchcontroller.widget.dpad.name": "D-Pad",
     "touchcontroller.widget.dpad.property.texture_set": "Texture set",
