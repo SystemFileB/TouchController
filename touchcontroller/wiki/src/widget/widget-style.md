@@ -28,7 +28,7 @@
 ### 经典扩展
 
 <!-- ANCHOR: p4 -->
-- 英文名称：classic_extension
+- 英文名称：classic_extened
 - 描述：新版图标和旧版控件背景
 - 此图集全部贴图均由 TouchController 美术组绘制，但 TouchController 原创控件以及一些基岩版原版经典贴图所没有的控件贴图不在其中
 <!-- ANCHOR_END: p4 -->
