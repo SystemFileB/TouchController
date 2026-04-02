@@ -57,6 +57,13 @@ fabric_versions = {
         "modmenu_legacy": True,
         "mixin": "0.7.11.38",
     },
+    "1.15.2": {
+        "api": "0.28.5+1.15",
+        "loader": "0.8.2+build.194",
+        "modmenu": "1.10.4+build.1",
+        "modmenu_legacy": True,
+        "mixin": "0.8+build.18",
+    },
     "1.16.5": {
         "api": "0.42.0+1.16",
         "loader": "0.8.9+build.203",

@@ -9,6 +9,7 @@ game_versions = {
     "1.8.9": {},
     "1.12.2": {},
     "1.14.4": {"mappings": True},
+    "1.15.2": {"mappings": True},
     "1.16.5": {"mappings": True},
     "1.17.1": {"mappings": True},
     "1.18.1": {"mappings": True},

@@ -283,7 +283,7 @@ def _game_version_impl(
             data = [
                 client_assets,
                 client_assets_version,
-            ] + [client_native_manifest] if client_native_manifest else [],
+            ] + ([client_native_manifest] if client_native_manifest else []),
             env = {
                 "LANG": "en_US.UTF8",
             },
@@ -295,7 +295,7 @@ def _game_version_impl(
                 "-Ddev.launch.legacyAssets=%s" % ("true" if client_legacy_assets else "false"),
                 "-Ddev.launch.legacyHome=%s" % ("true" if client_legacy else "false"),
                 "-Xmx4G",
-            ] + ["-Ddev.launch.nativeManifest=$(rlocationpath %s)" % client_native_manifest] if client_native_manifest else [],
+            ] + (["-Ddev.launch.nativeManifest=$(rlocationpath %s)" % client_native_manifest] if client_native_manifest else []),
             main_class = "top.fifthlight.fabazel.devlaunchwrapper.DevLaunchWrapper",
             runtime_deps = [
                 client,

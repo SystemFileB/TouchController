@@ -19,6 +19,15 @@ lexforge_versions = {
         "forge_sources_sha256": "01c3e270d51c94059118f8c255ca0b19cece2b37515a5765c8cac154225d6898",
         "forge_universal_sha256": "8daece39153538aaefcedd7edb936c06f1f04de2f157bed07b89fac1c399e7bb",
     },
+    "1.15.2": {
+        "java_target": 8,
+        "mcp_version": "1.15.2-20200515.085601",
+        "mcp_sha256": "17a1898f6a91ae61cc9a044fbec19e33f49b8a02e37e624fa762de156422a665",
+        "forge_version": "1.15.2-31.2.57",
+        "forge_userdev_sha256": "bfef6d74e733a0c9ec694857b962374ad3773eadf28d66a0247d2c5e0f9bb7a9",
+        "forge_sources_sha256": "b7b83f46f3dc0aaa5b61764a863a94fe917e5b016dc83b5607fee70512b1b107",
+        "forge_universal_sha256": "415329285fca582800582f5e40d807ea6d3ba14f5d7fa7d8595f35b79b2e8c79",
+    },
     "1.16.5": {
         "java_target": 8,
         "mcp_version": "1.16.5-20210115.111550",
