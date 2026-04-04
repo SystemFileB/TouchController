@@ -19,6 +19,7 @@ import top.fifthlight.touchcontroller.common.api.text.ApiTextFactory
 import top.fifthlight.touchcontroller.common.api.text.text
 import top.fifthlight.touchcontroller.common.api.texture.ApiBuiltInWidgetTextureProvider
 import top.fifthlight.touchcontroller.common.api.texture.ApiWidgetTextureBuilder
+import top.fifthlight.touchcontroller.common.api.trigger.ApiWidgetTriggerActionProvider
 import top.fifthlight.touchcontroller.common.control.action.GameActionInstanceImpl
 import top.fifthlight.touchcontroller.common.control.action.GameActions
 import top.fifthlight.touchcontroller.common.control.action.PlayerActionInstanceImpl
@@ -51,9 +52,7 @@ class TouchControllerApiImpl : TouchControllerApi {
     override fun registerWidgetTexture(textureBuilder: Consumer<WidgetTextureBuilder>) =
         ApiWidgetTextureBuilder().also { textureBuilder.accept(it) }.build()
 
-    override fun getWidgetTriggerActionProvider(): WidgetTriggerActionProvider {
-        TODO("Not yet implemented")
-    }
+    override fun getWidgetTriggerActionProvider() = ApiWidgetTriggerActionProvider
 
     override fun registerBuiltInWidget(widgetBuilder: Consumer<BuiltInWidgetBuilder>) {
         TODO("Not yet implemented")
