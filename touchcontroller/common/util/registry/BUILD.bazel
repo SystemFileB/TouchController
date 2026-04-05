@@ -4,4 +4,7 @@ kt_merge_library(
     name = "registry",
     srcs = glob(["*.kt"]),
     visibility = ["//touchcontroller:__subpackages__"],
+    deps = [
+        "@maven//:org_jetbrains_kotlinx_kotlinx_serialization_core_jvm",
+    ],
 )

@@ -28,11 +28,9 @@ import top.fifthlight.touchcontroller.common.control.widget.dpad.DPad
 import top.fifthlight.touchcontroller.common.control.widget.dpad.DPadExtraButton
 import top.fifthlight.touchcontroller.common.control.widget.joystick.Joystick
 import top.fifthlight.touchcontroller.common.gal.key.DefaultKeyBindingType
-import top.fifthlight.touchcontroller.common.gal.key.KeyBindingHandler
 import top.fifthlight.touchcontroller.common.gal.key.KeyBindingHandlerFactory
 import top.fifthlight.touchcontroller.common.layout.align.Align
 import top.fifthlight.touchcontroller.common.util.registry.SimpleRegistry
-import java.util.concurrent.ConcurrentHashMap
 
 object BuiltinWidgets {
     val registry = SimpleRegistry<BuiltInWidget>()
@@ -47,19 +45,6 @@ object BuiltinWidgets {
         hero = hero,
         hidden = hidden,
     ).also { registry.register(id, it) }
-
-    data class BuiltInWidget(
-        private val getter: (TextureSet) -> ControllerWidget,
-        val hero: Boolean = false,
-        val hidden: ((TextureSet) -> Boolean)? = null,
-    ) {
-        private val cache = ConcurrentHashMap<TextureSet, ControllerWidget>()
-        operator fun get(textureSet: TextureSet): ControllerWidget {
-            return cache.getOrPut(textureSet) {
-                getter(textureSet)
-            }
-        }
-    }
 
     private fun TextureSet.coordinate(key: TextureItem) = TextureCoordinate(
         textureSet = this,

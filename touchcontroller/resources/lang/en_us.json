@@ -106,7 +106,11 @@
     "touchcontroller.screen.manage_control_preset.sprint.none": "None",
     "touchcontroller.screen.manage_control_preset.sprint.right_top": "Right-top edge",
     "touchcontroller.screen.manage_control_preset.sprint.right": "Right side",
-    "touchcontroller.screen.manage_control_preset.use_vanilla_chat": "Use vanilla chat screen",
+    "touchcontroller.screen.manage_control_preset.customize_top_bar": "Customize top bar",
+    "touchcontroller.screen.top_bar_customize.title": "Top bar customize",
+    "touchcontroller.screen.top_bar_customize.no_widget_selected": "No widget selected",
+    "touchcontroller.screen.top_bar_customize.no_more_widget_to_add": "No more widget to add",
+    "touchcontroller.screen.top_bar_customize.list_add": "Add +",
 
     "touchcontroller.screen.config.layout.custom_control_layout": "Custom layout",
     "touchcontroller.screen.custom_control_layout.title": "Custom layout",

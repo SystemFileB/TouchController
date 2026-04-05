@@ -13,6 +13,7 @@ import top.fifthlight.touchcontroller.common.api.trigger.action
 import top.fifthlight.touchcontroller.common.control.ControllerWidget
 import top.fifthlight.touchcontroller.common.control.action.ButtonTrigger
 import top.fifthlight.touchcontroller.common.control.action.WidgetTriggerAction
+import top.fifthlight.touchcontroller.common.control.builtin.BuiltInWidget
 import top.fifthlight.touchcontroller.common.control.builtin.BuiltinWidgets
 import top.fifthlight.touchcontroller.common.control.property.TextureCoordinate
 import top.fifthlight.touchcontroller.common.control.widget.custom.ButtonActiveTexture
@@ -20,6 +21,7 @@ import top.fifthlight.touchcontroller.common.control.widget.custom.ButtonTexture
 import top.fifthlight.touchcontroller.common.control.widget.custom.CustomWidget
 import top.fifthlight.touchcontroller.common.layout.align.Align
 import top.fifthlight.touchcontroller.api.v1.text.Text as ApiTextInterface
+import top.fifthlight.touchcontroller.api.v1.widget.BuiltInWidget as ApiBuiltInWidget
 import top.fifthlight.touchcontroller.api.v1.widget.WidgetTriggerAction as ApiWidgetTriggerAction
 
 class ApiBuiltInWidgetBuilder : BuiltInWidgetBuilder {
@@ -65,14 +67,14 @@ class ApiBuiltInWidgetBuilder : BuiltInWidgetBuilder {
         this.doubleClickAction = action.action
     }
 
-    fun build() {
+    fun build(): ApiBuiltInWidget {
         val id = checkNotNull(id) { "id cannot be null" }
         val name = checkNotNull(name) { "name cannot be null" }
         val normalTexture = checkNotNull(normalTexture) { "normalTexture cannot be null" }
         val normalTextureItem = normalTexture.textureItem
         val activeTextureItem = activeTexture?.textureItem
 
-        BuiltinWidgets.BuiltInWidget(
+        return BuiltInWidget(
             getter = { textureSet ->
                 val normalTexture = ButtonTexture.Fixed(
                     texture = TextureCoordinate(
@@ -84,12 +86,14 @@ class ApiBuiltInWidgetBuilder : BuiltInWidgetBuilder {
                     ButtonActiveTexture.Gray
                 } else {
                     activeTextureItem?.let {
-                        ButtonActiveTexture.Texture(ButtonTexture.Fixed(
-                            texture = TextureCoordinate(
-                                textureSet = textureSet,
-                                textureItem = it,
-                            ),
-                        ))
+                        ButtonActiveTexture.Texture(
+                            ButtonTexture.Fixed(
+                                texture = TextureCoordinate(
+                                    textureSet = textureSet,
+                                    textureItem = it,
+                                ),
+                            )
+                        )
                     } ?: ButtonActiveTexture.Same
                 }
                 val doubleClick = doubleClickAction?.let { apiAction ->

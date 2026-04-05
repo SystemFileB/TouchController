@@ -21,7 +21,9 @@ kt_merge_library(
     ],
     visibility = ["//touchcontroller:__subpackages__"],
     deps = [
+        "//:kotlin_serialization",
         "//combine/core/data",
         "//combine/data",
+        "//touchcontroller/api",
     ],
 )

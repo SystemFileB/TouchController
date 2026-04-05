@@ -8,7 +8,6 @@ package top.fifthlight.touchcontroller.common.config.preset.builtin
 import top.fifthlight.mergetools.api.ActualConstructor
 import top.fifthlight.mergetools.api.ActualImpl
 import top.fifthlight.touchcontroller.assets.BuiltInTextureItems
-import top.fifthlight.touchcontroller.assets.BuiltInTextureSets
 import top.fifthlight.touchcontroller.common.config.layout.controllerLayoutOf
 import top.fifthlight.touchcontroller.common.config.preset.LayoutPreset
 import top.fifthlight.touchcontroller.common.config.preset.builtin.key.BuiltinPresetKey
@@ -29,7 +28,10 @@ object BuiltinPresetsProviderImpl : BuiltinPresetsProvider {
 
     override fun generate(key: BuiltinPresetKey): LayoutPreset {
         val textureSet = key.textureSet
-        val layers = BuiltinLayers[textureSet]
+        val layers = BuiltinLayers(
+            textureSet = textureSet,
+            topBarWidgets = key.topBar,
+        )
         val sprintButton = when (key.sprintButtonLocation) {
             BuiltinPresetKey.SprintButtonLocation.NONE -> null
             BuiltinPresetKey.SprintButtonLocation.RIGHT_TOP -> layers.sprintRightTopButton
@@ -44,11 +46,7 @@ object BuiltinPresetsProviderImpl : BuiltinPresetsProvider {
                 disableTouchGesture = controlStyle is BuiltinPresetKey.ControlStyle.SplitControls && controlStyle.buttonInteraction,
             ),
             layout = controllerLayoutOf(
-                if (key.useVanillaChat) {
-                    layers.vanillaChatControlLayer
-                } else {
-                    layers.controlLayer
-                },
+                layers.controlLayer,
                 layers.interactionLayer.takeIf {
                     controlStyle is BuiltinPresetKey.ControlStyle.SplitControls && controlStyle.buttonInteraction
                 },

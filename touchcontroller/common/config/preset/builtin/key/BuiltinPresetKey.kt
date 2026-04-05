@@ -5,12 +5,16 @@
 
 package top.fifthlight.touchcontroller.common.config.preset.builtin.key
 
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import top.fifthlight.combine.data.Identifier
 import top.fifthlight.touchcontroller.assets.BuiltInTextureSets
 import top.fifthlight.touchcontroller.assets.Texts
 import top.fifthlight.touchcontroller.common.assets.TextureSet
+import top.fifthlight.touchcontroller.common.control.builtin.BuiltInWidget
+import top.fifthlight.touchcontroller.common.control.builtin.BuiltinWidgets
 
 @Serializable
 data class BuiltinPresetKey(
@@ -26,8 +30,11 @@ data class BuiltinPresetKey(
     val opacity: Float = .6f,
     @SerialName("scale")
     val scale: Float = 1f,
-    @SerialName("useVanillaChat")
-    val useVanillaChat: Boolean = false,
+    @SerialName("top_bar")
+    val topBar: PersistentList<BuiltInWidget> = persistentListOf(
+        BuiltinWidgets.chat,
+        BuiltinWidgets.pause,
+    ),
 ) {
     @Serializable
     sealed class ControlStyle {

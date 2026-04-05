@@ -5,20 +5,21 @@
 
 package top.fifthlight.touchcontroller.common.config.preset.builtin
 
-import kotlinx.collections.immutable.plus
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.plus
 import kotlinx.collections.immutable.toPersistentList
 import top.fifthlight.data.IntOffset
 import top.fifthlight.touchcontroller.common.assets.TextureSet
-import top.fifthlight.touchcontroller.common.config.condition.input.BuiltinLayerCondition
 import top.fifthlight.touchcontroller.common.config.condition.BuiltinLayerConditionKey
 import top.fifthlight.touchcontroller.common.config.condition.LayerConditions
 import top.fifthlight.touchcontroller.common.config.condition.RidingEntityLayerConditionKey
+import top.fifthlight.touchcontroller.common.config.condition.input.BuiltinLayerCondition
 import top.fifthlight.touchcontroller.common.config.condition.layerConditionsOf
 import top.fifthlight.touchcontroller.common.config.layout.LayoutLayer
 import top.fifthlight.touchcontroller.common.config.preset.builtin.key.BuiltinPresetKey
-import top.fifthlight.touchcontroller.common.control.*
+import top.fifthlight.touchcontroller.common.control.ControllerWidget
+import top.fifthlight.touchcontroller.common.control.builtin.BuiltInWidget
 import top.fifthlight.touchcontroller.common.control.builtin.BuiltinWidgets
 import top.fifthlight.touchcontroller.common.control.builtin.BuiltinWidgets.dpadDismountButton
 import top.fifthlight.touchcontroller.common.control.builtin.BuiltinWidgets.dpadJumpButton
@@ -30,11 +31,13 @@ import top.fifthlight.touchcontroller.common.control.widget.dpad.DPad
 import top.fifthlight.touchcontroller.common.control.widget.joystick.Joystick
 import top.fifthlight.touchcontroller.common.gal.entity.EntityTypeProvider
 import top.fifthlight.touchcontroller.common.layout.align.Align
-import java.util.concurrent.ConcurrentHashMap
 
-@ConsistentCopyVisibility
-data class BuiltinLayers private constructor(
-    private val textureSet: TextureSet,
+data class BuiltinLayers(
+    val textureSet: TextureSet,
+    val topBarWidgets: PersistentList<BuiltInWidget> = persistentListOf(
+        BuiltinWidgets.chat,
+        BuiltinWidgets.pause,
+    ),
 ) {
     data class Layers(
         val name: String,
@@ -80,33 +83,24 @@ data class BuiltinLayers private constructor(
     val controlLayer = LayoutLayer(
         name = "Control",
         conditions = layerConditionsOf(),
-        widgets = persistentListOf(
-            BuiltinWidgets.pause[textureSet].cloneBase(
-                align = Align.CENTER_TOP,
-                offset = IntOffset(-9, 0),
-            ),
-            BuiltinWidgets.chat[textureSet].cloneBase(
-                align = Align.CENTER_TOP,
-                offset = IntOffset(9, 0),
-            ),
-            BuiltinWidgets.inventory[textureSet],
-        )
-    )
-
-    val vanillaChatControlLayer = LayoutLayer(
-        name = "Control",
-        conditions = layerConditionsOf(),
-        widgets = persistentListOf(
-            BuiltinWidgets.pause[textureSet].cloneBase(
-                align = Align.CENTER_TOP,
-                offset = IntOffset(-9, 0),
-            ),
-            BuiltinWidgets.vanillaChat[textureSet].cloneBase(
-                align = Align.CENTER_TOP,
-                offset = IntOffset(9, 0),
-            ),
-            BuiltinWidgets.inventory[textureSet],
-        )
+        widgets = run {
+            val widgets = topBarWidgets.map { it[textureSet] }
+            val totalWidth = widgets.sumOf { it.size().width }
+            var x = -totalWidth / 2
+            return@run buildList {
+                for (widget in widgets) {
+                    val width = widget.size().width
+                    add(
+                        widget.cloneBase(
+                            align = Align.CENTER_TOP,
+                            offset = IntOffset(x + width / 2, 0),
+                        )
+                    )
+                    x += width
+                }
+                add(BuiltinWidgets.inventory[textureSet])
+            }.toPersistentList()
+        }
     )
 
     val interactionLayer = LayoutLayer(
@@ -455,10 +449,4 @@ data class BuiltinLayers private constructor(
             ),
         ),
     )
-
-    companion object {
-        private val cache = ConcurrentHashMap<TextureSet, BuiltinLayers>()
-        operator fun get(textureSet: TextureSet): BuiltinLayers =
-            cache.computeIfAbsent(textureSet, ::BuiltinLayers)
-    }
 }

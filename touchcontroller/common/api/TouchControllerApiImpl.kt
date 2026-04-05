@@ -11,8 +11,8 @@ import top.fifthlight.touchcontroller.api.v1.action.GameActionInstance
 import top.fifthlight.touchcontroller.api.v1.action.PlayerAction
 import top.fifthlight.touchcontroller.api.v1.action.PlayerActionInstance
 import top.fifthlight.touchcontroller.api.v1.text.Text
+import top.fifthlight.touchcontroller.api.v1.widget.BuiltInWidget
 import top.fifthlight.touchcontroller.api.v1.widget.BuiltInWidgetBuilder
-import top.fifthlight.touchcontroller.api.v1.widget.TopBarWidgetBuilder
 import top.fifthlight.touchcontroller.api.v1.widget.WidgetTextureBuilder
 import top.fifthlight.touchcontroller.common.api.text.ApiTextFactory
 import top.fifthlight.touchcontroller.common.api.text.text
@@ -20,11 +20,14 @@ import top.fifthlight.touchcontroller.common.api.texture.ApiBuiltInWidgetTexture
 import top.fifthlight.touchcontroller.common.api.texture.ApiWidgetTextureBuilder
 import top.fifthlight.touchcontroller.common.api.trigger.ApiWidgetTriggerActionProvider
 import top.fifthlight.touchcontroller.common.api.widget.ApiBuiltInWidgetBuilder
+import top.fifthlight.touchcontroller.common.config.preset.topbar.TopBarWidgets
 import top.fifthlight.touchcontroller.common.control.action.GameActionInstanceImpl
 import top.fifthlight.touchcontroller.common.control.action.GameActions
 import top.fifthlight.touchcontroller.common.control.action.PlayerActionInstanceImpl
 import top.fifthlight.touchcontroller.common.control.action.PlayerActions
+import top.fifthlight.touchcontroller.common.control.builtin.BuiltinWidgets
 import java.util.function.Consumer
+import top.fifthlight.touchcontroller.common.control.builtin.BuiltInWidget as BuiltInWidgetImpl
 
 class TouchControllerApiImpl : TouchControllerApi {
     override fun getTextFactory() = ApiTextFactory
@@ -57,8 +60,10 @@ class TouchControllerApiImpl : TouchControllerApi {
     override fun registerBuiltInWidget(widgetBuilder: Consumer<BuiltInWidgetBuilder>) =
         ApiBuiltInWidgetBuilder().also { widgetBuilder.accept(it) }.build()
 
-    override fun registerTopBarWidget(widgetBuilder: Consumer<TopBarWidgetBuilder>) {
-        TODO("Not yet implemented")
+    override fun registerTopBarWidget(widget: BuiltInWidget) {
+        val widget = widget as BuiltInWidgetImpl
+        val id = BuiltinWidgets.registry.getId(widget) ?: error("Widget not registered")
+        TopBarWidgets.registry.register(id, widget)
     }
 
     companion object : TouchControllerApi by TouchControllerApi.getInstance()

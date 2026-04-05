@@ -36,7 +36,7 @@ public interface TouchControllerApi {
 
     WidgetTriggerActionProvider getWidgetTriggerActionProvider();
 
-    void registerBuiltInWidget(Consumer<BuiltInWidgetBuilder> widgetBuilder);
+    BuiltInWidget registerBuiltInWidget(Consumer<BuiltInWidgetBuilder> widgetBuilder);
 
-    void registerTopBarWidget(Consumer<TopBarWidgetBuilder> widgetBuilder);
+    void registerTopBarWidget(BuiltInWidget widget);
 }

@@ -25,13 +25,16 @@ public class TouchControllerApiExample implements TouchControllerApiEntrypoint {
                 .classic("touchcontroller_api_example", "classic_taichi", 18, 18)
                 .newStyle("touchcontroller_api_example", "new_taichi", 22, 22));
 
-        api.registerBuiltInWidget(widgetBuilder -> widgetBuilder.id("touchcontroller-api-example:taichi")
+        var widget = api.registerBuiltInWidget(widgetBuilder -> widgetBuilder.id("touchcontroller-api-example:taichi")
                 .name(api.getTextFactory().literal("Taichi"))
                 .down(api.getWidgetTriggerActionProvider().gameAction(gameAction))
                 .release(api.getWidgetTriggerActionProvider().playerAction(playerAction))
                 .normalTexture(texture)
                 .activeTexture(texture)
+                .press("key.jump")
                 .activeGray()
         );
+
+        api.registerTopBarWidget(widget);
     }
 }

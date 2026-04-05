@@ -7,6 +7,7 @@ kt_merge_library(
     merge_deps = [
         "//touchcontroller/common/assets",
         "//touchcontroller/common/config/preset",
+        "//touchcontroller/common/control/builtin",
         "//touchcontroller/resources/lang:text_binding",
         "//touchcontroller/resources/texture:texture_set_lib",
     ],
@@ -14,5 +15,6 @@ kt_merge_library(
     deps = [
         "//:kotlin_serialization",
         "//combine/core/data",
+        "@maven//:org_jetbrains_kotlinx_kotlinx_collections_immutable_jvm",
     ],
 )

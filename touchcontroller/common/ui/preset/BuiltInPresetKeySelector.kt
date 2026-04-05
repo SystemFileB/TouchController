@@ -6,6 +6,7 @@
 package top.fifthlight.touchcontroller.common.ui.component
 
 import androidx.compose.runtime.*
+import cafe.adriel.voyager.navigator.LocalNavigator
 import top.fifthlight.combine.data.Text
 import top.fifthlight.combine.layout.Alignment
 import top.fifthlight.combine.layout.Arrangement
@@ -210,6 +211,26 @@ fun BuiltInPresetKeySelector(
                 .fillMaxHeight(),
             verticalArrangement = Arrangement.spacedBy(4),
         ) {
+            val navigator = LocalNavigator.current
+            navigator?.let {
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        navigator.push(
+                            TopBarConfigureScreen(
+                                textureSet = value.textureSet,
+                                value = value.topBar,
+                                onValueChanged = {
+                                    onValueChanged(value.copy(topBar = it))
+                                },
+                            )
+                        )
+                    },
+                ) {
+                    Text(Text.translatable(Texts.SCREEN_MANAGE_CONTROL_PRESET_CUSTOMIZE_TOP_BAR))
+                }
+            }
+
             if (LocalScreenSize.current.width < 600) {
                 StyleBox(
                     modifier = Modifier.fillMaxWidth(),
@@ -360,22 +381,6 @@ fun BuiltInPresetKeySelector(
                     Text(Text.translatable(value.sprintButtonLocation.nameId))
                     SelectIcon(expanded = expanded)
                 }
-            }
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    modifier = Modifier.weight(1f),
-                    text = Text.translatable(Texts.SCREEN_MANAGE_CONTROL_PRESET_USE_VANILLA_CHAT),
-                )
-                Switch(
-                    value = value.useVanillaChat,
-                    onValueChanged = {
-                        onValueChanged(value.copy(useVanillaChat = it))
-                    },
-                )
             }
         }
     }

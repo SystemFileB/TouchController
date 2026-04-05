@@ -5,15 +5,9 @@
 
 package top.fifthlight.touchcontroller.common.assets
 
-import kotlinx.serialization.KSerializer
-import kotlinx.serialization.SerializationException
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.PrimitiveKind
-import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
 import top.fifthlight.combine.paint.Texture
+import top.fifthlight.touchcontroller.common.util.registry.RegistrySerializer
 
 @Serializable(with = TextureItemSerializer::class)
 data class TextureItem(
@@ -22,17 +16,8 @@ data class TextureItem(
     val get: (TextureSet) -> Texture,
 )
 
-class TextureItemSerializer : KSerializer<TextureItem> {
-    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(
-        serialName = "top.fifthlight.touchcontroller.common.assets.TextureItem",
-        kind = PrimitiveKind.STRING,
-    )
-
-    override fun serialize(encoder: Encoder, value: TextureItem) = encoder.encodeString(
-        TextureItems.registry.getId(value)
-            ?: throw SerializationException("TextureItem $value not registered")
-    )
-
-    override fun deserialize(decoder: Decoder): TextureItem =
-        TextureItems.registry[decoder.decodeString()] ?: TextureItems.unknown
-}
+class TextureItemSerializer : RegistrySerializer<TextureItem>(
+    registry = TextureItems.registry,
+    serialName = "TextureItem",
+    unknown = { TextureItems.unknown },
+)
