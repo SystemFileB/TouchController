@@ -60,10 +60,13 @@ class TouchControllerApiImpl : TouchControllerApi {
     override fun registerBuiltInWidget(widgetBuilder: Consumer<BuiltInWidgetBuilder>) =
         ApiBuiltInWidgetBuilder().also { widgetBuilder.accept(it) }.build()
 
-    override fun registerTopBarWidget(widget: BuiltInWidget) {
+    override fun registerTopBarWidget(widget: BuiltInWidget, defaultAdded: Boolean) {
         val widget = widget as BuiltInWidgetImpl
         val id = BuiltinWidgets.registry.getId(widget) ?: error("Widget not registered")
         TopBarWidgets.registry.register(id, widget)
+        if (defaultAdded) {
+            TopBarWidgets.defaultAdded.add(widget)
+        }
     }
 
     companion object : TouchControllerApi by TouchControllerApi.getInstance()

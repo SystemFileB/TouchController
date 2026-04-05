@@ -21,4 +21,9 @@ object TopBarWidgets {
     val switchPerspective = register("switchPerspective", BuiltinWidgets.switchPerspective)
     val playerList = register("playerList", BuiltinWidgets.playerList)
     val screenshot = register("screenshot", BuiltinWidgets.screenshot)
+
+    val defaultAdded = mutableListOf(
+        chat,
+        pause,
+    )
 }

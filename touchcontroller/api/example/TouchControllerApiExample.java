@@ -35,6 +35,6 @@ public class TouchControllerApiExample implements TouchControllerApiEntrypoint {
                 .activeGray()
         );
 
-        api.registerTopBarWidget(widget);
+        api.registerTopBarWidget(widget, true);
     }
 }

@@ -5,6 +5,7 @@
 
 package top.fifthlight.touchcontroller.common.config.preset.builtin
 
+import kotlinx.collections.immutable.toPersistentList
 import top.fifthlight.mergetools.api.ActualConstructor
 import top.fifthlight.mergetools.api.ActualImpl
 import top.fifthlight.touchcontroller.assets.BuiltInTextureItems
@@ -13,6 +14,7 @@ import top.fifthlight.touchcontroller.common.config.preset.LayoutPreset
 import top.fifthlight.touchcontroller.common.config.preset.builtin.key.BuiltinPresetKey
 import top.fifthlight.touchcontroller.common.config.preset.builtin.key.BuiltinPresetsProvider
 import top.fifthlight.touchcontroller.common.config.preset.info.PresetControlInfo
+import top.fifthlight.touchcontroller.common.config.preset.topbar.TopBarWidgets
 import top.fifthlight.touchcontroller.common.control.widget.boat.BoatButton
 import top.fifthlight.touchcontroller.common.control.widget.custom.ButtonActiveTexture
 import top.fifthlight.touchcontroller.common.control.widget.custom.ButtonTexture
@@ -30,7 +32,7 @@ object BuiltinPresetsProviderImpl : BuiltinPresetsProvider {
         val textureSet = key.textureSet
         val layers = BuiltinLayers(
             textureSet = textureSet,
-            topBarWidgets = key.topBar,
+            topBarWidgets = key.topBar ?: TopBarWidgets.defaultAdded.toPersistentList(),
         )
         val sprintButton = when (key.sprintButtonLocation) {
             BuiltinPresetKey.SprintButtonLocation.NONE -> null

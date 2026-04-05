@@ -12,6 +12,7 @@ kt_merge_library(
         "//touchcontroller/common/config/preset",
         "//touchcontroller/common/config/preset/builtin/key",
         "//touchcontroller/common/config/preset/info",
+        "//touchcontroller/common/config/preset/topbar",
         "//touchcontroller/common/control",
         "//touchcontroller/common/control/builtin",
         "//touchcontroller/common/control/property",

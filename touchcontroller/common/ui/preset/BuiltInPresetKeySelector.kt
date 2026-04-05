@@ -7,6 +7,7 @@ package top.fifthlight.touchcontroller.common.ui.component
 
 import androidx.compose.runtime.*
 import cafe.adriel.voyager.navigator.LocalNavigator
+import kotlinx.collections.immutable.toPersistentList
 import top.fifthlight.combine.data.Text
 import top.fifthlight.combine.layout.Alignment
 import top.fifthlight.combine.layout.Arrangement
@@ -29,6 +30,7 @@ import top.fifthlight.touchcontroller.assets.Texts
 import top.fifthlight.touchcontroller.common.assets.TextureSets
 import top.fifthlight.touchcontroller.common.config.layout.ControllerLayout
 import top.fifthlight.touchcontroller.common.config.preset.builtin.key.BuiltinPresetKey
+import top.fifthlight.touchcontroller.common.config.preset.topbar.TopBarWidgets
 import top.fifthlight.touchcontroller.common.control.ControllerWidget
 import top.fifthlight.touchcontroller.common.layout.data.ContextInput
 import top.fifthlight.touchcontroller.common.ui.theme.LocalTouchControllerTheme
@@ -219,7 +221,7 @@ fun BuiltInPresetKeySelector(
                         navigator.push(
                             TopBarConfigureScreen(
                                 textureSet = value.textureSet,
-                                value = value.topBar,
+                                value = value.topBar ?: TopBarWidgets.defaultAdded.toPersistentList(),
                                 onValueChanged = {
                                     onValueChanged(value.copy(topBar = it))
                                 },

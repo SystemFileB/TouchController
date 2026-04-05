@@ -38,5 +38,5 @@ public interface TouchControllerApi {
 
     BuiltInWidget registerBuiltInWidget(Consumer<BuiltInWidgetBuilder> widgetBuilder);
 
-    void registerTopBarWidget(BuiltInWidget widget);
+    void registerTopBarWidget(BuiltInWidget widget, boolean defaultAdded);
 }
