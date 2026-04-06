@@ -19,6 +19,8 @@ import java.util.function.Consumer;
 
 @ApiStatus.NonExtendable
 public interface TouchControllerApi {
+    int getApiLevel();
+
     @Nullable
     static TouchControllerApi getInstance() {
         return TouchControllerApiHolder.INSTANCE;
