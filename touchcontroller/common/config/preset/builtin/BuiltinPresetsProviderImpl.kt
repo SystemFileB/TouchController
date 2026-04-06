@@ -32,7 +32,7 @@ object BuiltinPresetsProviderImpl : BuiltinPresetsProvider {
         val textureSet = key.textureSet
         val layers = BuiltinLayers(
             textureSet = textureSet,
-            topBarWidgets = key.topBar ?: TopBarWidgets.defaultAdded.toPersistentList(),
+            topBarWidgets = key.topBar.widgets ?: TopBarWidgets.defaultAdded.toPersistentList(),
         )
         val sprintButton = when (key.sprintButtonLocation) {
             BuiltinPresetKey.SprintButtonLocation.NONE -> null

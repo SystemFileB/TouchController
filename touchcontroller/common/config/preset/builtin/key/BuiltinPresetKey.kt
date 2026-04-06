@@ -6,8 +6,12 @@
 package top.fifthlight.touchcontroller.common.config.preset.builtin.key
 
 import kotlinx.collections.immutable.PersistentList
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import kotlinx.collections.immutable.toPersistentList
+import kotlinx.serialization.*
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.descriptors.SerialDescriptor
+import kotlinx.serialization.descriptors.buildClassSerialDescriptor
+import kotlinx.serialization.encoding.*
 import top.fifthlight.combine.data.Identifier
 import top.fifthlight.touchcontroller.assets.BuiltInTextureSets
 import top.fifthlight.touchcontroller.assets.Texts
@@ -29,7 +33,7 @@ data class BuiltinPresetKey(
     @SerialName("scale")
     val scale: Float = 1f,
     @SerialName("top_bar")
-    val topBar: PersistentList<BuiltInWidget>? = null,
+    val topBar: TopBarConfig = TopBarConfig(),
 ) {
     @Serializable
     sealed class ControlStyle {
@@ -73,11 +77,50 @@ data class BuiltinPresetKey(
         ) : MoveMethod()
     }
 
+    @Serializable(with = LayoutPresetsSerializer::class)
+    data class TopBarConfig(
+        val widgets: PersistentList<BuiltInWidget>? = null,
+    )
+
     val preset by lazy {
         BuiltinPresetsProvider.generate(this)
     }
 
     companion object {
         val DEFAULT = BuiltinPresetKey()
+    }
+}
+
+class LayoutPresetsSerializer : KSerializer<BuiltinPresetKey.TopBarConfig> {
+    private val widgetSerializer = serializer<BuiltInWidget>()
+    private val widgetsSerializer = ListSerializer(widgetSerializer)
+
+    override val descriptor: SerialDescriptor = buildClassSerialDescriptor(
+        serialName = "top.fifthlight.touchcontroller.common.config.preset.builtin.key.BuiltinPresetKey.TopBarConfig",
+    ) {
+        element("widgets", widgetsSerializer.descriptor, isOptional = true)
+    }
+
+    override fun serialize(encoder: Encoder, value: BuiltinPresetKey.TopBarConfig) =
+        encoder.encodeStructure(descriptor) {
+            value.widgets?.let { encodeSerializableElement(descriptor, 0, widgetsSerializer, it) }
+        }
+
+    override fun deserialize(decoder: Decoder): BuiltinPresetKey.TopBarConfig {
+        var widgets: PersistentList<BuiltInWidget>? = null
+        return decoder.decodeStructure(descriptor) {
+            while (true) {
+                when (val index = decodeElementIndex(descriptor)) {
+                    0 -> widgets =
+                        decodeSerializableElement(descriptor, 0, widgetsSerializer, widgets).toPersistentList()
+
+                    CompositeDecoder.DECODE_DONE -> break
+                    else -> throw SerializationException("Unexpected index: $index")
+                }
+            }
+            BuiltinPresetKey.TopBarConfig(
+                widgets = widgets,
+            )
+        }
     }
 }

@@ -221,9 +221,9 @@ fun BuiltInPresetKeySelector(
                         navigator.push(
                             TopBarConfigureScreen(
                                 textureSet = value.textureSet,
-                                value = value.topBar ?: TopBarWidgets.defaultAdded.toPersistentList(),
+                                value = value.topBar.widgets ?: TopBarWidgets.defaultAdded.toPersistentList(),
                                 onValueChanged = {
-                                    onValueChanged(value.copy(topBar = it))
+                                    onValueChanged(value.copy(topBar = value.topBar.copy(widgets = it)))
                                 },
                             )
                         )
