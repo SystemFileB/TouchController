@@ -1,5 +1,9 @@
 # TouchController NEWS - User visible changes
 
+## 0.3.1-alpha08
+
+- Fixed crash when saving top bar config
+
 ## 0.3.1-alpha07
 
 - Added support for 26.1.1
