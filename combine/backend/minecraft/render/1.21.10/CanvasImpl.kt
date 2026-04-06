@@ -1,5 +1,7 @@
 package top.fifthlight.combine.backend.minecraft.render.v1_21_10
 
+import com.mojang.blaze3d.platform.cursor.CursorType
+import com.mojang.blaze3d.platform.cursor.CursorTypes
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Font
 import net.minecraft.client.gui.GuiGraphics
@@ -12,6 +14,7 @@ import top.fifthlight.combine.backend.minecraft.item.v1_21_10.toVanilla
 import top.fifthlight.combine.backend.minecraft.render.v1_21_10.extension.SubmittableGuiGraphics
 import top.fifthlight.combine.backend.minecraft.text.v1_21_10.toMinecraft
 import top.fifthlight.combine.data.Text
+import top.fifthlight.combine.input.pointer.PointerIcon
 import top.fifthlight.combine.item.data.ItemStack
 import top.fifthlight.combine.item.paint.ItemCanvas
 import top.fifthlight.combine.paint.Color
@@ -148,5 +151,21 @@ class CanvasImpl(val guiGraphics: GuiGraphics) : ItemCanvas {
         guiGraphics.pose().scale(size.width.toFloat() / 16f, size.height.toFloat() / 16f)
         guiGraphics.renderItem(minecraftStack, offset.x, offset.y)
         popState()
+    }
+
+    private fun mapPointer(pointer: PointerIcon) = when (pointer) {
+        PointerIcon.Arrow -> CursorTypes.ARROW
+        PointerIcon.Edit -> CursorTypes.IBEAM
+        PointerIcon.Crosshair -> CursorTypes.CROSSHAIR
+        PointerIcon.PointingHand -> CursorTypes.POINTING_HAND
+        PointerIcon.ResizeVertical -> CursorTypes.RESIZE_NS
+        PointerIcon.ResizeHorizonal -> CursorTypes.RESIZE_EW
+        PointerIcon.ResizeAll -> CursorTypes.RESIZE_ALL
+        PointerIcon.NotAllowed -> CursorTypes.NOT_ALLOWED
+        else -> CursorType.DEFAULT
+    }
+
+    override fun requestPointerIcon(pointer: PointerIcon) {
+        guiGraphics.requestCursor(mapPointer(pointer))
     }
 }
