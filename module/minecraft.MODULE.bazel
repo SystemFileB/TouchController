@@ -31,6 +31,7 @@ game_versions = {
     "1.21.11": {"mappings": True},
     "26.1": {},
     "26.1.1": {},
+    "26.2-snapshot-1": {},
 }
 
 minecraft = use_extension("@rules_mc//:extensions.bzl", "minecraft")
