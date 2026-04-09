@@ -87,6 +87,7 @@ upload_modrinth(
     file_name = "blazesdl-%s.jar" % blazesdl_26_1_version,
     game_versions = [
         "26.1",
+        "26.1.1",
         "26.1.2",
     ],
     loaders = ["fabric"],
