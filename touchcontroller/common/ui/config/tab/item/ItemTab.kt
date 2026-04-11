@@ -60,16 +60,16 @@ class ItemTabs(
         }
     )
 
-    val crosshairAimingItemsTab = ItemTab(
+    val usingAimingItemsTab = ItemTab(
         options = TabOptions(
-            titleId = Texts.SCREEN_CONFIG_ITEM_CROSSHAIR_AIMING_ITEMS_TITLE,
+            titleId = Texts.SCREEN_CONFIG_ITEM_USING_AIMING_ITEMS_TITLE,
             group = TabGroup.ItemGroup,
             index = 2,
-            onReset = { copy(item = item.copy(crosshairAimingItems = DefaultItemListProvider.crosshairAimingItems)) },
+            onReset = { copy(item = item.copy(usingAimingItems = DefaultItemListProvider.usingAimingItems)) },
         ),
-        value = configScreenModel.uiState.map { it.config.item.crosshairAimingItems },
+        value = configScreenModel.uiState.map { it.config.item.usingAimingItems },
         onValueChanged = {
-            configScreenModel.updateConfig { copy(item = item.copy(crosshairAimingItems = it)) }
+            configScreenModel.updateConfig { copy(item = item.copy(usingAimingItems = it)) }
         }
     )
 }

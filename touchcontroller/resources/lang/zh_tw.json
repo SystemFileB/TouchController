@@ -205,7 +205,7 @@
     "touchcontroller.screen.config.item.title": "物品",
     "touchcontroller.screen.config.item.usable_items.title": "可長按使用的物品",
     "touchcontroller.screen.config.item.show_crosshair_items.title": "手持時顯示準心的物品",
-    "touchcontroller.screen.config.item.crosshair_aiming_items.title": "需要修正使用方向的物品",
+    "touchcontroller.screen.config.item.using_aiming_items.title": "需要修正使用方向的物品",
     "touchcontroller.screen.config.item.whitelist.title": "白名單",
     "touchcontroller.screen.config.item.whitelist.description": "透過物品清單來設定。",
     "touchcontroller.screen.config.item.blacklist.title": "黑名單",

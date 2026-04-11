@@ -11,7 +11,7 @@ import top.fifthlight.touchcontroller.common.config.item.ItemList
 interface DefaultItemListProvider {
     val usableItems: ItemList
     val showCrosshairItems: ItemList
-    val crosshairAimingItems: ItemList
+    val usingAimingItems: ItemList
 
     @ExpectFactory
     interface Factory {

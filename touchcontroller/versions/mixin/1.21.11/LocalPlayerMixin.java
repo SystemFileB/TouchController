@@ -44,7 +44,7 @@ public abstract class LocalPlayerMixin {
         var cameraYaw = Math.toRadians(instance.getViewYRot(tickDelta));
 
         var position = instance.getEyePosition(tickDelta);
-        var projectionMatrix = Minecraft.getInstance().gameRenderer.getProjectionMatrix(fov);
+        var projectionMatrix = gameRenderer.getProjectionMatrix(fov);
         var direction = CrosshairTargetHelper.getCrosshairDirection(projectionMatrix, cameraPitch, cameraYaw);
         CrosshairTargetHelper.INSTANCE.setLastCrosshairDirection(direction);
 

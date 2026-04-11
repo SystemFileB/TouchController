@@ -201,7 +201,7 @@
     "touchcontroller.screen.config.item.title": "Предмети",
     "touchcontroller.screen.config.item.usable_items.title": "Довге натискання предметами",
     "touchcontroller.screen.config.item.show_crosshair_items.title": "Тримання предметів показує перехрестя",
-    "touchcontroller.screen.config.item.crosshair_aiming_items.title": "Корекція прицілювання предметів",
+    "touchcontroller.screen.config.item.using_aiming_items.title": "Корекція прицілювання предметів",
     "touchcontroller.screen.config.item.whitelist.title": "Білий список",
     "touchcontroller.screen.config.item.whitelist.description": "Налаштовує за списком предметів.",
     "touchcontroller.screen.config.item.blacklist.title": "Чорний список",

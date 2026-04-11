@@ -72,7 +72,7 @@ object DefaultItemListProviderImpl : DefaultItemListProvider {
         )
     )
 
-    override val crosshairAimingItems = ItemList(
+    override val usingAimingItems = ItemList(
         whitelist = persistentListOf(
             ItemImpl(Items.ENDER_EYE),
             ItemImpl(Items.GLASS_BOTTLE),

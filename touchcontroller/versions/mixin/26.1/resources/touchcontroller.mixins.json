@@ -6,18 +6,19 @@
         "defaultRequire": 1
     },
     "client": [
-        "CameraAccessor",
-        "ChatComponentMixin",
-        "ClientInputAccessor",
-        "ControlsScreenMixin",
-        "MultiPlayerGameModeMixin",
-        "MinecraftMixin",
-        "InputConstantsMixin",
-        "DisableMouseDirectionMixin",
-        "OptionsSubScreenAccessor",
-        "InGameHudMixin",
-        "KeyboardInputMixin",
-        "KeyMappingAccessor",
-        "LocalPlayerMixin"
+      "CameraAccessor",
+      "ChatComponentMixin",
+      "ClientInputAccessor",
+      "ControlsScreenMixin",
+      "DisableMouseDirectionMixin",
+      "InGameHudMixin",
+      "InputConstantsMixin",
+      "KeyboardInputMixin",
+      "KeyMappingAccessor",
+      "LocalPlayerMixin",
+      "MinecraftMixin",
+      "MultiPlayerGameModeMixin",
+      "OptionsSubScreenAccessor",
+      "ProjectileUtilMixin"
     ]
 }

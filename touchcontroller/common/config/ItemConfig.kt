@@ -13,13 +13,13 @@ import top.fifthlight.touchcontroller.common.gal.itemlist.DefaultItemListProvide
 data class ItemConfig(
     val usableItems: ItemList,
     val showCrosshairItems: ItemList,
-    val crosshairAimingItems: ItemList,
+    val usingAimingItems: ItemList,
 ) {
     companion object {
         fun default(itemListProvider: DefaultItemListProvider = DefaultItemListProvider) = ItemConfig(
             usableItems = itemListProvider.usableItems,
             showCrosshairItems = itemListProvider.showCrosshairItems,
-            crosshairAimingItems = itemListProvider.crosshairAimingItems,
+            usingAimingItems = itemListProvider.usingAimingItems,
         )
     }
 }

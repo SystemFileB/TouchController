@@ -9,10 +9,10 @@ import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toPersistentList
 import top.fifthlight.touchcontroller.common.ui.config.model.ConfigScreenModel
-import top.fifthlight.touchcontroller.common.ui.config.tab.about.AboutTab
 import top.fifthlight.touchcontroller.common.ui.config.tab.ItemTabs
 import top.fifthlight.touchcontroller.common.ui.config.tab.Tab
 import top.fifthlight.touchcontroller.common.ui.config.tab.TabGroup
+import top.fifthlight.touchcontroller.common.ui.config.tab.about.AboutTab
 import top.fifthlight.touchcontroller.common.ui.config.tab.general.ControlTab
 import top.fifthlight.touchcontroller.common.ui.config.tab.general.DebugTab
 import top.fifthlight.touchcontroller.common.ui.config.tab.general.RegularTab
@@ -36,7 +36,7 @@ fun getAllTabs(configScreenModel: ConfigScreenModel): PersistentList<Tab> {
         DebugTab,
         itemTabs.usableItemsTab,
         itemTabs.showCrosshairItemsTab,
-        itemTabs.crosshairAimingItemsTab,
+        itemTabs.usingAimingItemsTab,
     ).toPersistentList()
 }
 

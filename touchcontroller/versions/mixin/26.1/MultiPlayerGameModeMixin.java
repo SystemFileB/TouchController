@@ -62,8 +62,8 @@ public abstract class MultiPlayerGameModeMixin implements GameModeWithBreakingPr
     protected abstract void startPrediction(ClientLevel world, PredictiveAction packetCreator);
 
     @Unique
-    private boolean touchcontroller$crosshairAimingContainItem(GlobalConfig config, Item item) {
-        return config.getItem().getCrosshairAimingItems().contains(new ItemImpl(item));
+    private boolean touchcontroller$usingAimingContainItem(GlobalConfig config, Item item) {
+        return config.getItem().getUsingAimingItems().contains(new ItemImpl(item));
     }
 
     @Unique
@@ -74,7 +74,7 @@ public abstract class MultiPlayerGameModeMixin implements GameModeWithBreakingPr
         }
 
         var itemStack = player.getItemInHand(hand);
-        if (!touchcontroller$crosshairAimingContainItem(config, itemStack.getItem())) {
+        if (!touchcontroller$usingAimingContainItem(config, itemStack.getItem())) {
             return;
         }
 

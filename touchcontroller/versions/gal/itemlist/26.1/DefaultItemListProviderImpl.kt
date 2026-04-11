@@ -52,6 +52,7 @@ object DefaultItemListProviderImpl : DefaultItemListProvider {
             ItemDataComponentTypeImpl(DataComponents.BUNDLE_CONTENTS),
             ItemDataComponentTypeImpl(DataComponents.CONSUMABLE),
             ItemDataComponentTypeImpl(DataComponents.EQUIPPABLE),
+            ItemDataComponentTypeImpl(DataComponents.KINETIC_WEAPON),
         )
     )
 
@@ -72,7 +73,7 @@ object DefaultItemListProviderImpl : DefaultItemListProvider {
         )
     )
 
-    override val crosshairAimingItems = ItemList(
+    override val usingAimingItems = ItemList(
         whitelist = persistentListOf(
             ItemImpl(Items.ENDER_EYE),
             ItemImpl(Items.GLASS_BOTTLE),

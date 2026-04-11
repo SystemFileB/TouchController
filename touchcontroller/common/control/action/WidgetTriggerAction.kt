@@ -82,8 +82,8 @@ sealed class WidgetTriggerAction {
                 INVERT(Texts.WIDGET_TRIGGER_KEY_LOCK_TYPE_INVERT),
             }
 
-            override fun refresh(uuid: Uuid, renderTick: Int) {
-                keyBindingState?.refreshLock(uuid, renderTick)
+            override fun refresh(uuid: Uuid, tick: Int) {
+                keyBindingState?.refreshLock(uuid, tick)
             }
 
             override fun hasLock(uuid: Uuid): Boolean = keyBindingState?.getLock(uuid) == true

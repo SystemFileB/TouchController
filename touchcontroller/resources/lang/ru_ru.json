@@ -200,7 +200,7 @@
     "touchcontroller.screen.config.item.title": "Предметы",
     "touchcontroller.screen.config.item.usable_items.title": "Время удержания касания для использования",
     "touchcontroller.screen.config.item.show_crosshair_items.title": "Предметы при которых отображается перекрестие",
-    "touchcontroller.screen.config.item.crosshair_aiming_items.title": "Предметы, которым нужна корректировка прицеливания",
+    "touchcontroller.screen.config.item.using_aiming_items.title": "Предметы, которым нужна корректировка прицеливания",
     "touchcontroller.screen.config.item.whitelist.title": "Белый список",
     "touchcontroller.screen.config.item.whitelist.description": "Настройка по списку предметов.",
     "touchcontroller.screen.config.item.blacklist.title": "Чёрный список",
