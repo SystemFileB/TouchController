@@ -59,7 +59,9 @@ object AboutTab : Tab() {
         ) {
             val iconSize = 32
             Row(
-                modifier = Modifier.fillMaxWidth().height(iconSize),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(iconSize),
                 horizontalArrangement = Arrangement.spacedBy(8),
             ) {
                 RawTextureIcon(
@@ -67,41 +69,62 @@ object AboutTab : Tab() {
                     size = IntSize(iconSize),
                 )
                 Column(
-                    modifier = Modifier.weight(1f).height(iconSize),
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(iconSize),
                     verticalArrangement = Arrangement.SpaceAround,
                 ) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(4)) {
-                        Text(Text.literal(BuildInfo.MOD_NAME).bold())
-                        Text(BuildInfo.MOD_VERSION)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(4)
+                    ) {
+                        Text(text = Text.literal(BuildInfo.MOD_NAME).bold())
+                        Text(
+                            modifier = Modifier.weight(1f),
+                            text = BuildInfo.MOD_VERSION,
+                        )
                     }
-                    Text(BuildInfo.MOD_DESCRIPTION)
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = BuildInfo.MOD_DESCRIPTION,
+                    )
                 }
             }
 
-            Column {
+            Column(modifier = Modifier.fillMaxWidth()) {
                 Row {
-                    Text(Text.translatable(Texts.SCREEN_CONFIG_ABOUT_AUTHORS_TITLE))
-                    Text(BuildInfo.MOD_AUTHORS.joinToString(", "))
+                    Text(text = Text.translatable(Texts.SCREEN_CONFIG_ABOUT_AUTHORS_TITLE))
+                    Text(
+                        modifier = Modifier.weight(1f),
+                        text = BuildInfo.MOD_AUTHORS.joinToString(", "),
+                    )
                 }
                 Row {
-                    Text(Text.translatable(Texts.SCREEN_CONFIG_ABOUT_CONTRIBUTORS_TITLE))
-                    Text(BuildInfo.MOD_CONTRIBUTORS.joinToString(", "))
+                    Text(text = Text.translatable(Texts.SCREEN_CONFIG_ABOUT_CONTRIBUTORS_TITLE))
+                    Text(
+                        modifier = Modifier.weight(1f),
+                        text = BuildInfo.MOD_CONTRIBUTORS.joinToString(", "),
+                    )
                 }
                 Row {
-                    Text(Text.translatable(Texts.SCREEN_CONFIG_ABOUT_LICENSE_TITLE))
+                    Text(text = Text.translatable(Texts.SCREEN_CONFIG_ABOUT_LICENSE_TITLE))
                     aboutInfo?.modLicense?.let { modLicense ->
                         val license = License(
                             name = BuildInfo.MOD_LICENSE,
                             content = modLicense,
                         )
                         Link(
+                            modifier = Modifier.weight(1f),
                             text = BuildInfo.MOD_LICENSE,
                             onClick = {
                                 navigator?.push(LicenseScreen(license))
                             },
                         )
                     } ?: run {
-                        Text(text = BuildInfo.MOD_LICENSE)
+                        Text(
+                            modifier = Modifier.weight(1f),
+                            text = BuildInfo.MOD_LICENSE,
+                        )
                     }
                 }
             }
