@@ -67,7 +67,7 @@ class TouchController : ClientModInitializer {
 
     private fun initialize() {
         HudElementRegistry.attachElementBefore(
-            VanillaHudElements.MISC_OVERLAYS,
+            VanillaHudElements.BOSS_BAR,
             Identifier.of(BuildInfo.MOD_ID, "hud").toMinecraft()
         ) { drawContext, partialTicks ->
             val client = Minecraft.getInstance()
