@@ -28,6 +28,7 @@ kt_merge_library(
         "//combine/core/modifier/scroll",
         "//combine/core/paint",
         "//combine/core/screen",
+        "//combine/core/text",
         "//combine/core/widget/layout",
         "//combine/data",
         "//combine/widget",

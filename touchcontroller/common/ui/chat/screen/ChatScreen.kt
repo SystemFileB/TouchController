@@ -23,6 +23,7 @@ import top.fifthlight.combine.modifier.scroll.verticalScroll
 import top.fifthlight.combine.paint.Colors
 import top.fifthlight.combine.screen.ScreenFactory
 import top.fifthlight.combine.screen.ScreenFactoryFactory
+import top.fifthlight.combine.text.TextHitTestResult
 import top.fifthlight.combine.widget.layout.Column
 import top.fifthlight.combine.widget.layout.Row
 import top.fifthlight.combine.widget.ui.*
@@ -35,9 +36,11 @@ import top.fifthlight.touchcontroller.common.gal.chat.ChatMessageProvider
 import top.fifthlight.touchcontroller.common.gal.chat.ChatMessageProviderFactory
 import top.fifthlight.touchcontroller.common.ui.chat.model.ChatScreenModel
 import top.fifthlight.touchcontroller.common.ui.theme.TouchControllerTheme
+import top.fifthlight.touchcontroller.common.ui.widget.ColorPreferenceItem
+import top.fifthlight.touchcontroller.common.ui.widget.IntSliderPreferenceItem
+import top.fifthlight.touchcontroller.common.ui.widget.Scaffold
 import top.fifthlight.touchcontroller.common.ui.widget.navigation.AppBar
 import top.fifthlight.touchcontroller.common.ui.widget.navigation.BackButton
-import top.fifthlight.touchcontroller.common.ui.widget.*
 
 @Composable
 private fun ChatScreen() {
@@ -116,21 +119,40 @@ private fun ChatScreen() {
                 var messages by remember { mutableStateOf(messageProvider.getMessages()) }
                 LaunchedEffect(Unit) {
                     while (true) {
-                        withFrameMillis { delta ->
+                        withFrameMillis { _ ->
                             messages = messageProvider.getMessages()
                         }
                     }
                 }
-                Column(
-                    modifier = Modifier
-                        .verticalScroll(true)
-                        .background(Colors.TRANSPARENT_BLACK)
-                        .weight(1f)
-                        .fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(uiState.lineSpacing, Alignment.Bottom),
+                CompositionLocalProvider(
+                    LocalTextHitHandler provides {
+                        when (it) {
+                            is TextHitTestResult.InsertText -> if (it.overwrite) {
+                                screenModel.updateText(it.text)
+                            } else {
+                                // TODO: append after cursor. there is no good way to do it currently
+                                screenModel.updateText(uiState.text + it.text)
+                            }
+
+                            is TextHitTestResult.Native -> it.action()
+                        }
+                    }
                 ) {
-                    for (message in messages) {
-                        Text(message.message, color = uiState.textColor)
+                    Column(
+                        modifier = Modifier
+                            .verticalScroll(true)
+                            .background(Colors.TRANSPARENT_BLACK)
+                            .weight(1f)
+                            .fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(uiState.lineSpacing, Alignment.Bottom),
+                    ) {
+                        for (message in messages) {
+                            ClickableText(
+                                text = message.message,
+                                color = uiState.textColor,
+                                acceptInsertion = false, // No shift key in touch interface
+                            )
+                        }
                     }
                 }
                 val bottomBarHeight = 32
@@ -205,7 +227,7 @@ private fun ChatScreen() {
 }
 
 @ActualImpl(ChatScreenProvider::class)
-object ChatScreenProviderFactoryImpl: ChatScreenProvider {
+object ChatScreenProviderFactoryImpl : ChatScreenProvider {
     @JvmStatic
     @ActualConstructor
     fun of(): ChatScreenProvider = this
