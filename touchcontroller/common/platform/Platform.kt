@@ -10,6 +10,7 @@ import top.fifthlight.touchcontroller.proxy.message.ProxyMessage
 
 interface Platform {
     val name: Text
+    val useDefaultInputHandler: Boolean
 
     fun resize(width: Int, height: Int) {}
     fun pollEvent(): ProxyMessage?

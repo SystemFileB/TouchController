@@ -24,6 +24,9 @@ class ProxyPlatform(scope: CoroutineScope, private val proxy: LauncherSocketProx
     override val name: Text
         get() = Text.translatable(Texts.PLATFORM_PROXY)
 
+    override val useDefaultInputHandler: Boolean
+        get() = true
+
     override fun pollSmallEvent(): ProxyMessage? = proxy.receive()
 
     override fun sendSmallEvent(message: ProxyMessage) {

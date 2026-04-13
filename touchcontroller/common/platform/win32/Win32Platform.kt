@@ -24,6 +24,9 @@ class Win32Platform(window: NativeWindow.Win32) : Platform {
     override val name: Text
         get() = Text.translatable(Texts.PLATFORM_WIN32)
 
+    override val useDefaultInputHandler: Boolean
+        get() = true
+
     private val readBuffer = ByteArray(65536)
     override fun pollEvent(): ProxyMessage? {
         val length = Interface.pollEvent(readBuffer).takeIf { it != 0 } ?: return null

@@ -5,15 +5,9 @@
 
 package top.fifthlight.touchcontroller.common.platform.sdl
 
-import org.lwjgl.sdl.SDLError
-import org.lwjgl.sdl.SDLEvents
-import org.lwjgl.sdl.SDLHaptic
+import org.lwjgl.sdl.*
 import org.lwjgl.sdl.SDLHaptic.SDL_InitHapticRumble
 import org.lwjgl.sdl.SDLHaptic.SDL_OpenHaptic
-import org.lwjgl.sdl.SDLInit
-import org.lwjgl.sdl.SDLStdinc
-import org.lwjgl.sdl.SDL_Event
-import org.lwjgl.sdl.SDL_TouchFingerEvent
 import org.slf4j.LoggerFactory
 import top.fifthlight.blazesdl.api.BlazeSDLAPI
 import top.fifthlight.blazesdl.api.BlazeSDLEventHandler
@@ -115,6 +109,9 @@ class BlazeSDLPlatform(api: BlazeSDLAPI) : BlazeSDLEventHandler, Platform {
 
     override val name: Text
         get() = Text.translatable(Texts.PLATFORM_BLAZESDL)
+
+    override val useDefaultInputHandler: Boolean
+        get() = true
 
     override fun pollEvent(): ProxyMessage? = queue.removeFirstOrNull()
 

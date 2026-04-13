@@ -19,6 +19,9 @@ class IosPlatform(socketPath: String) : LargeMessageWrappedPlatform() {
     override val name: Text
         get() = Text.translatable(Texts.PLATFORM_IOS)
 
+    override val useDefaultInputHandler: Boolean
+        get() = true
+
     private val handle = Transport.new(socketPath)
     private val readBuffer = ByteArray(128)
 

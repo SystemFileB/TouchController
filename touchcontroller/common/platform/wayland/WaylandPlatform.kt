@@ -24,6 +24,9 @@ class WaylandPlatform(window: NativeWindow.Wayland) : Platform {
     override val name: Text
         get() = Text.translatable(Texts.PLATFORM_WAYLAND)
 
+    override val useDefaultInputHandler: Boolean
+        get() = true
+
     override fun resize(width: Int, height: Int) = Interface.resize(width, height)
 
     private val readBuffer = ByteArray(65536)
