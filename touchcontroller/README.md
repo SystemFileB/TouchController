@@ -31,20 +31,24 @@ On different mod loaders, TouchController needs dependency mod as below:
 
 Below are game versions and mod loaders TouchController supports:
 
-- 1.12.2 (Forge)
-- 1.16.5 (Forge, Fabric)
-- 1.20.1 (Forge, Fabric)
-- 1.20.4 (Forge, NeoForge, Fabric)
-- 1.20.6 (Forge, NeoForge, Fabric)
-- 1.21   (Forge, NeoForge, Fabric)
-- 1.21.1 (Forge, NeoForge, Fabric)
-- 1.21.3 (Forge, NeoForge, Fabric)
-- 1.21.4 (Forge, NeoForge, Fabric)
-- 1.21.5 (Forge, NeoForge, Fabric)
-- 1.21.6 (Forge, NeoForge, Fabric)
-- 1.21.7 (Forge, NeoForge, Fabric)
-- 1.21.8 (Forge, NeoForge, Fabric)
+- 1.12.2  (Forge)
+- 1.16.5  (Forge, Fabric)
+- 1.20.1  (Forge, Fabric)
+- 1.20.4  (Forge, NeoForge, Fabric)
+- 1.20.6  (Forge, NeoForge, Fabric)
+- 1.21    (Forge, NeoForge, Fabric)
+- 1.21.1  (Forge, NeoForge, Fabric)
+- 1.21.3  (Forge, NeoForge, Fabric)
+- 1.21.4  (Forge, NeoForge, Fabric)
+- 1.21.5  (Forge, NeoForge, Fabric)
+- 1.21.6  (Forge, NeoForge, Fabric)
+- 1.21.7  (Forge, NeoForge, Fabric)
+- 1.21.8  (Forge, NeoForge, Fabric)
+- 1.21.10 (Fabric)
 - 1.21.11 (Fabric)
+- 26.1    (Fabric)
+- 26.1.1  (Fabric)
+- 26.1.2  (Fabric)
 
 Support for more game versions and mod loaders is under development.
 
@@ -109,20 +113,24 @@ TouchController.
 
 目前 TouchController 支持的 Minecraft 版本和 mod 加载器有：
 
-- 1.12.2 (Forge)
-- 1.16.5 (Forge, Fabric)
-- 1.20.1 (Forge, Fabric)
-- 1.20.4 (Forge, NeoForge, Fabric)
-- 1.20.6 (Forge, NeoForge, Fabric)
-- 1.21   (Forge, NeoForge, Fabric)
-- 1.21.1 (Forge, NeoForge, Fabric)
-- 1.21.3 (Forge, NeoForge, Fabric)
-- 1.21.4 (Forge, NeoForge, Fabric)
-- 1.21.5 (Forge, NeoForge, Fabric)
-- 1.21.6 (Forge, NeoForge, Fabric)
-- 1.21.7 (Forge, NeoForge, Fabric)
-- 1.21.8 (Forge, NeoForge, Fabric)
+- 1.12.2  (Forge)
+- 1.16.5  (Forge, Fabric)
+- 1.20.1  (Forge, Fabric)
+- 1.20.4  (Forge, NeoForge, Fabric)
+- 1.20.6  (Forge, NeoForge, Fabric)
+- 1.21    (Forge, NeoForge, Fabric)
+- 1.21.1  (Forge, NeoForge, Fabric)
+- 1.21.3  (Forge, NeoForge, Fabric)
+- 1.21.4  (Forge, NeoForge, Fabric)
+- 1.21.5  (Forge, NeoForge, Fabric)
+- 1.21.6  (Forge, NeoForge, Fabric)
+- 1.21.7  (Forge, NeoForge, Fabric)
+- 1.21.8  (Forge, NeoForge, Fabric)
+- 1.21.10 (Fabric)
 - 1.21.11 (Fabric)
+- 26.1    (Fabric)
+- 26.1.1  (Fabric)
+- 26.1.2  (Fabric)
 
 更多游戏版本、mod 加载器的支持正在开发中。
 
@@ -166,16 +174,19 @@ If you can't read Chinese, feel free to use a translator.
 1. 添加 TouchController 的 proxy-client 库到启动器内
 
     - Groovy
+
     ```groovy
     implementation 'top.fifthlight.touchcontroller:proxy-client-android:0.0.5'
     ```
 
     - Kotlin
+
     ```kotlin
     implementation("top.fifthlight.touchcontroller:proxy-client-android:0.0.5")
     ```
 
     - Gradle version catalogs
+
     ```toml
     touchcontroller-proxy-client-android = { group = "top.fifthlight.touchcontroller", name = "proxy-client-android", version = "0.0.5" }
     ```

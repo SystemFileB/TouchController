@@ -4,7 +4,9 @@
     "version": "${version}",
     "name": "Combine",
     "description": "${description}",
-    "authors": ["fifth_light"],
+    "authors": [
+        "fifth_light"
+    ],
     "license": "${license}",
     "environment": "client",
     "contact": {
@@ -14,13 +16,24 @@
     },
     "icon": "icon.png",
     "depends": {
-        "minecraft": ["1.21.6", "1.21.7", "1.21.8", "1.21.10", "1.21.11", "26.1", "26.1.1"],
+        "minecraft": [
+            "1.21.6",
+            "1.21.7",
+            "1.21.8",
+            "1.21.10",
+            "1.21.11",
+            "26.1",
+            "26.1.1",
+            "26.1.2"
+        ],
         "java": ">=21",
         "fabric-language-kotlin": "*"
     },
     "custom": {
         "modmenu": {
-            "badges": ["library"]
+            "badges": [
+                "library"
+            ]
         }
     }
 }

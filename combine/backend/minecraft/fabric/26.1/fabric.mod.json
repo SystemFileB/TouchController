@@ -15,7 +15,11 @@
     "icon": "icon.png",
     "mixins": ["combine.mixins.render.json"],
     "depends": {
-        "minecraft": ["26.1", "26.1.1"],
+        "minecraft": [
+            "26.1",
+            "26.1.1",
+            "26.1.2"
+        ],
         "java": ">=25",
         "fabric-language-kotlin": "*"
     },
