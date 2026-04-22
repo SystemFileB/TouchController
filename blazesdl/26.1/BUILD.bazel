@@ -111,7 +111,7 @@ java_binary(
     jvm_flags = [
         "-Dkotlinx.coroutines.debug=on",
         "-Dfabric.development=true",
-        "-Ddev.launch.version=26.1.2-rc-1",
+        "-Ddev.launch.version=26.1.2",
         "-Ddev.launch.type=client",
         "-Ddev.launch.assetsVersion=$(rlocationpath //game/26.1.2:game_client_assets_version)",
         "-Ddev.launch.mainClass=net.fabricmc.loader.impl.launch.knot.KnotClient",
