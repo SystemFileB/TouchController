@@ -16,20 +16,16 @@
     "environment": "client",
     "depends": {
         "java": ">=21",
-        "minecraft": [
-            "1.21.10",
-            "1.21.11",
-            "26.1",
-            "26.1.1",
-            "26.1.2"
-        ],
+        "minecraft": "mod_game_versions_array",
         "combine": "^${combine_version}",
         "fabric-api": "*",
         "fabric-language-kotlin": "*"
     },
     "custom": {
         "modmenu": {
-            "badges": ["library"]
+            "badges": [
+                "library"
+            ]
         }
     }
 }

@@ -26,6 +26,13 @@ touchcontroller_contributors = [
     "LanYun2022",
     "Lessebq",
 ]
+touchcontroller_fabric_game_versions = [
+    "1.21.10",
+    "1.21.11",
+    "26.1",
+    "26.1.1",
+    "26.1.2",
+]
 
 touchcontroller_api_version = "1.0.0"
 touchcontroller_api_license = "Apache-2.0"

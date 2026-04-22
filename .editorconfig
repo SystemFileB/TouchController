@@ -2,6 +2,9 @@
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[.github/**.yml]
+indent_size = 2
+
 [fabric.mod.json]
 indent_size = 4
 

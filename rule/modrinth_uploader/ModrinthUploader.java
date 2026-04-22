@@ -25,6 +25,7 @@ public class ModrinthUploader {
         var root = (Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
         root.setLevel(Level.INFO);
 
+        var useTokenFromEnvironment = false;
         String tokenSecretId = null;
         String projectId = null;
         String versionName = null;
@@ -45,6 +46,7 @@ public class ModrinthUploader {
         for (var i = 0; i < args.length; i++) {
             var arg = args[i];
             switch (arg) {
+                case "--use-token-from-environment" -> useTokenFromEnvironment = true;
                 case "--token-secret-id" -> tokenSecretId = args[++i];
                 case "--project-id" -> projectId = args[++i];
                 case "--version-name" -> versionName = args[++i];
@@ -81,7 +83,9 @@ public class ModrinthUploader {
             dependencies.add(new ModrinthUploadData.Dependency(tempDependencyProjectId, tempDependencyVersionId, tempDependencyType));
         }
 
-        Objects.requireNonNull(tokenSecretId, "tokenSecretId cannot be null");
+        if (!useTokenFromEnvironment) {
+            Objects.requireNonNull(tokenSecretId, "tokenSecretId cannot be null");
+        }
         Objects.requireNonNull(projectId, "projectId cannot be null");
         Objects.requireNonNull(versionName, "versionName cannot be null");
         Objects.requireNonNull(versionId, "versionId cannot be null");
@@ -101,10 +105,18 @@ public class ModrinthUploader {
 
         var uploadData = new ModrinthUploadData(versionName, versionId, changelog, dependencies, gameVersions, versionType, loaders, projectId, List.of("primary_file"), "primary_file", true);
 
-        var tokenBackend = TokenBackend.getDefault();
-        var token = tokenBackend.getToken(tokenSecretId);
-        if (token == null) {
-            throw new IllegalArgumentException("Token " + tokenSecretId + " not found");
+        String token;
+        if (useTokenFromEnvironment) {
+            token = System.getenv("MODRINTH_TOKEN");
+            if (token == null) {
+                throw new IllegalArgumentException("Token is not set in environment variable MODRINTH_TOKEN");
+            }
+        } else {
+            var tokenBackend = TokenBackend.getDefault();
+            token = tokenBackend.getToken(tokenSecretId);
+            if (token == null) {
+                throw new IllegalArgumentException("Token " + tokenSecretId + " not found");
+            }
         }
 
         try (var httpClient = HttpClient.newHttpClient()) {
