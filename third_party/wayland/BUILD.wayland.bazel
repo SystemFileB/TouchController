@@ -45,6 +45,7 @@ cc_library(
         "src/wayland-os.c",
         "src/wayland-os.h",
     ],
+    target_compatible_with = ["@platforms//os:linux"],
     deps = [
         ":wayland-util",
         "@libffi",
