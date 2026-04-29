@@ -55,7 +55,7 @@ fun Column(
                 val childConstraint = constraints.copy(
                     minWidth = 0,
                     minHeight = 0,
-                    maxHeight = constraints.maxHeight - allSpacing
+                    maxHeight = constraints.maxHeight - allSpacing,
                 )
 
                 val heights = IntArray(measurables.size)
@@ -63,6 +63,7 @@ fun Column(
                 var allHeight = 0
                 var maxWidth = 0
                 var totalWeight = 0f
+                var lastWeightIndex = -1
 
                 val placeables = Array<Placeable?>(measurables.size) { null }
                 measurables.forEachIndexed { index, measurable ->
@@ -70,6 +71,7 @@ fun Column(
                     if (parentData?.weight != null) {
                         heights[index] = -1
                         totalWeight += parentData.weight
+                        lastWeightIndex = index
                     } else {
                         val placeable = measurable.measure(childConstraint)
                         heights[index] = placeable.height
@@ -79,19 +81,25 @@ fun Column(
                     }
                 }
 
+                val allSpace = (constraints.maxHeight - allHeight - allSpacing).coerceAtLeast(0)
                 val weightUnitSpace = if (totalWeight > 0f) {
-                    val allSpace = constraints.maxHeight - allHeight - allSpacing
-                    val unitSpace = allSpace / totalWeight
-                    allHeight += constraints.maxHeight
-                    unitSpace
+                    allHeight += allSpace
+                    allSpace / totalWeight
                 } else {
                     0f
                 }
 
+                var occupiedSpace = 0
                 for (i in heights.indices) {
                     if (heights[i] == -1) {
-                        val weight = (measurables[i].parentData as ColumnParentData).weight!!
-                        heights[i] = (weightUnitSpace * weight).toInt()
+                        if (i == lastWeightIndex) {
+                            heights[i] = allSpace - occupiedSpace
+                        } else {
+                            val weight = (measurables[i].parentData as ColumnParentData).weight!!
+                            val height = (weightUnitSpace * weight).toInt()
+                            occupiedSpace += height
+                            heights[i] = height
+                        }
                         val placeable = measurables[i].measure(
                             constraints = childConstraint.copy(
                                 minHeight = heights[i],

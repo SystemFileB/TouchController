@@ -55,7 +55,7 @@ fun Row(
                 val childConstraint = constraints.copy(
                     minWidth = 0,
                     minHeight = 0,
-                    maxWidth = constraints.maxWidth - allSpacing
+                    maxWidth = constraints.maxWidth - allSpacing,
                 )
 
                 val widths = IntArray(measurables.size)
@@ -63,6 +63,7 @@ fun Row(
                 var allWidth = 0
                 var maxHeight = 0
                 var totalWeight = 0f
+                var lastWeightIndex = -1
 
                 val placeables = Array<Placeable?>(measurables.size) { null }
                 measurables.forEachIndexed { index, measurable ->
@@ -70,6 +71,7 @@ fun Row(
                     if (parentData?.weight != null) {
                         widths[index] = -1
                         totalWeight += parentData.weight
+                        lastWeightIndex = index
                     } else {
                         val placeable = measurable.measure(childConstraint)
                         widths[index] = placeable.width
@@ -79,19 +81,25 @@ fun Row(
                     }
                 }
 
+                val allSpace = (constraints.maxWidth - allWidth - allSpacing).coerceAtLeast(0)
                 val weightUnitSpace = if (totalWeight > 0f) {
-                    val allSpace = constraints.maxWidth - allWidth - allSpacing
-                    val unitSpace = allSpace / totalWeight
-                    allWidth += constraints.maxWidth
-                    unitSpace
+                    allWidth += allSpace
+                    allSpace / totalWeight
                 } else {
                     0f
                 }
 
+                var occupiedSpace = 0
                 for (i in widths.indices) {
                     if (widths[i] == -1) {
-                        val weight = (measurables[i].parentData as RowParentData).weight!!
-                        widths[i] = (weightUnitSpace * weight).toInt()
+                        if (i == lastWeightIndex) {
+                            widths[i] = allSpace - occupiedSpace
+                        } else {
+                            val weight = (measurables[i].parentData as RowParentData).weight!!
+                            val width = (weightUnitSpace * weight).toInt()
+                            occupiedSpace += width
+                            widths[i] = width
+                        }
                         val placeable = measurables[i].measure(
                             constraints = childConstraint.copy(
                                 minWidth = widths[i],
