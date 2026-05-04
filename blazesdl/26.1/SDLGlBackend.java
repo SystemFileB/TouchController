@@ -27,12 +27,16 @@ public class SDLGlBackend extends GlBackend {
 
     @Override
     public void setWindowHints() {
+        // 设置 OpenGL 主版本和次版本（所有平台均需要）
         SDLVideo.SDL_GL_SetAttribute(SDLVideo.SDL_GL_CONTEXT_MAJOR_VERSION, VERSION_MAJOR);
         SDLVideo.SDL_GL_SetAttribute(SDLVideo.SDL_GL_CONTEXT_MINOR_VERSION, VERSION_MINOR);
-        SDLVideo.SDL_GL_SetAttribute(SDLVideo.SDL_GL_CONTEXT_PROFILE_MASK, SDLVideo.SDL_GL_CONTEXT_PROFILE_CORE);
+    
+        // Wayland 下的 EGL 可能不支持 CORE PROFILE 和 FORWARD_COMPATIBLE 标志
         if (!SDLUtil.IS_WAYLAND) {
+            SDLVideo.SDL_GL_SetAttribute(SDLVideo.SDL_GL_CONTEXT_PROFILE_MASK, SDLVideo.SDL_GL_CONTEXT_PROFILE_CORE);
             SDLVideo.SDL_GL_SetAttribute(SDLVideo.SDL_GL_CONTEXT_FLAGS, SDLVideo.SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG);
         }
+        // 对于 Wayland，仅设置版本，不设置 profile 和 flags
     }
 
     @Override
